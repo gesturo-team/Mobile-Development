@@ -2,4 +2,11 @@
     <string name="app_name">My Application</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="learn">Learning</string>
+    <string name="profile">Profile</string>
+    <string name="welcome">Welcome to Gesturo</string>
+    <string name="signup">Sign up below to get started!</string>
+    <string name="welcomelogin">Welcome Back</string>
+    <string name="login">Fill your login details!</string>
 </resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home"
+        android:title="@string/home"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/nav_edu"
+        android:icon="@drawable/education"
+        android:title="@string/learn"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/profile"
+        app:showAsAction="ifRoom"
+        android:title="@string/profile"
+        />
+
+</menu>

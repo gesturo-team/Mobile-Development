@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.main.MainActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
         app:menu="@menu/nav_bottom"
         android:background="@color/white"
         app:itemIconTint="@null"
-        app:itemIconSize="70dp"
+        app:itemIconSize="24dp"
         />
 
 </RelativeLayout>
