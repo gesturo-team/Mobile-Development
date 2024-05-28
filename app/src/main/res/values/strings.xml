@@ -9,4 +9,8 @@
     <string name="signup">Sign up below to get started!</string>
     <string name="welcomelogin">Welcome Back</string>
     <string name="login">Fill your login details!</string>
+    <string name="email">E-Mail</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="hi">Hi, </string>
 </resources>

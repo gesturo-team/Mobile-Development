@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:padding="20dp"
-    tools:context=".ui.learn.LearnFragment">
+    tools:context=".ui.learn.LearnFragment"
+    android:background="@color/bg_grey">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -5,30 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:padding="20dp"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment"
+    android:background="@color/bg_grey">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="20dp">
 
         <TextView
             android:id="@+id/tvHai"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Hai, "
+            android:text="@string/hi"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:fontFamily="@font/inter_medium"
+            android:textColor="@color/blue6"/>
 
         <TextView
             android:id="@+id/tvName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Gesturo"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/name"
+            android:textColor="@color/blue6"
+            android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/tvHai"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textSize="14sp"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
@@ -85,14 +91,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sign Language Translator"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textColor="@color/blue6"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/inter_medium"
+                    />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@android:color/holo_orange_light"
-                    android:text="Start" />
+                    android:backgroundTint="@color/bg_btn_main"
+                    android:text="Start"
+                    android:fontFamily="@font/inter_semibold"
+                    android:textColor="@color/white"/>
             </LinearLayout>
 
             <!-- Second column -->
@@ -118,15 +128,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Modules"
-                        android:textColor="#0000FF"
-                        android:textSize="18sp" />
+                        android:textColor="@color/blue6"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/inter_medium" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Learn alphabet and numbers in ASL"
                         android:textColor="#888888"
-                        android:textSize="14sp" />
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter"/>
 
                 </LinearLayout>
 
@@ -144,7 +156,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Quiz"
-                        android:textColor="#0000FF"
+                        android:textColor="@color/blue6"
                         android:textSize="16sp" />
 
                     <TextView
@@ -152,7 +164,8 @@
                         android:layout_height="wrap_content"
                         android:text="Check your knowledge"
                         android:textColor="#888888"
-                        android:textSize="14sp" />
+                        android:textSize="12sp"
+                        android:fontFamily="@font/inter" />
 
                 </LinearLayout>
 

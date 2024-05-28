@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+    tools:context=".ui.profile.ProfileFragment"
+    android:background="@color/bg_grey">
 
     <ImageView
         android:id="@+id/imageView"
@@ -99,7 +100,8 @@
             android:layout_gravity="center_vertical"
             android:fontFamily="@font/inter_medium"
             android:text="About Us"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/blue4"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/btnLogout"
@@ -119,9 +121,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/inter_semibold"
+            android:fontFamily="@font/inter_bold"
             android:text="LOGOUT"
             android:textAlignment="center"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="@color/red"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
