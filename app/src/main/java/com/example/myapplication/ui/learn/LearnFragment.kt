@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentLearnBinding
+import com.example.myapplication.ui.number.NumberActivity
 import com.example.myapplication.ui.quiz.QuizActivity
 
 private const val ARG_PARAM1 = "param1"
@@ -41,6 +42,14 @@ class LearnFragment : Fragment() {
         binding.rlQuiz.setOnClickListener {
             val quizIntent = Intent(activity, QuizActivity::class.java)
             activity?.startActivity(quizIntent)
+        }
+        binding.rlNumbers.setOnClickListener {
+            val numberIntent = Intent(activity, NumberActivity::class.java)
+            activity?.startActivity(numberIntent)
+        }
+        binding.rlAlphabet.setOnClickListener {
+            val alphabetIntent = Intent(activity, NumberActivity::class.java)
+            activity?.startActivity(alphabetIntent)
         }
     }
 
