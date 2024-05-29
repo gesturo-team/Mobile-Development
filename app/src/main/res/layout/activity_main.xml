@@ -21,6 +21,7 @@
         app:menu="@menu/nav_bottom"
         android:background="@color/white"
         app:itemIconTint="@null"
-        app:itemIconSize="24dp" />
+        app:itemIconSize="24dp"
+        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"/>
 
 </RelativeLayout>
