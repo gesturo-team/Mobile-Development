@@ -59,4 +59,19 @@ dependencies {
     implementation(libs.androidx.camera.camera2)
     implementation(libs.camera.lifecycle)
     implementation(libs.camera.view)
+
+    //Glide
+    implementation(libs.glide)
+
+    implementation(libs.androidx.datastore.preferences)
+
+    //api
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.gson)
+
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+    implementation(libs.androidx.lifecycle.runtime.ktx) //untuk lifecycleScope
+    
 }

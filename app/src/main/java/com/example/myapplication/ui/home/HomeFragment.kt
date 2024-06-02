@@ -7,10 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.myapplication.CameraActivity
-import com.example.myapplication.R
+import com.example.myapplication.detection.CameraActivity
 import com.example.myapplication.databinding.FragmentHomeBinding
-import com.example.myapplication.databinding.FragmentLearnBinding
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null

@@ -67,7 +67,7 @@
             app:startIconDrawable="@drawable/txt_email">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_register_email"
+                android:id="@+id/ed_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -99,13 +99,23 @@
             app:startIconDrawable="@drawable/txt_key">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_register_pass"
+                android:id="@+id/ed_login_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
                 android:background="@drawable/bg_input"/>
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/passEdTextLayout" />
 
 
         <!--        <com.google.android.material.textfield.TextInputEditText-->
