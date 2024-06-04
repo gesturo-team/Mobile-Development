@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         navView.selectedItemId = R.id.nav_home
 
         mainViewModel.getSession().observe(this) { user ->
-            if (!user.isLogin) {
+            if (!user.isLoggedIn) {
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }

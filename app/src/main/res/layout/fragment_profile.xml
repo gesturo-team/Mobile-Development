@@ -37,6 +37,7 @@
             android:layout_marginEnd="20dp"/>
 
         <TextView
+            android:id="@+id/txtFullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="gesturo"
@@ -65,6 +66,7 @@
             android:layout_marginEnd="20dp"/>
 
         <TextView
+            android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="gesturo@gmail.com"
@@ -95,6 +97,7 @@
             android:src="@drawable/txt_info_2" />
 
         <TextView
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

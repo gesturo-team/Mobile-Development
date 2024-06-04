@@ -1,157 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:padding="20dp"
     tools:context=".ui.learn.LearnFragment"
     android:background="@color/bg_grey">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
-        <RelativeLayout
-            android:id="@+id/rlAlphabet"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/alphabet_card"
-            android:padding="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:background="@color/white"
+            app:title="Learning"
+            android:paddingStart="20dp"
+            app:titleTextColor="@color/blue6"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
 
-            <TextView
-                android:id="@+id/tvAlphabet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_medium"
-                android:text="Alphabet"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-            <TextView
-                android:id="@+id/tvDescAl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvAlphabet"
-                android:background="@drawable/bg_attr"
-                android:fontFamily="@font/inter"
-                android:text="26 Letters"
-                android:layout_marginTop="2dp"
-                android:padding="2dp"
-                android:textColor="@color/blue6"
-                android:textSize="12sp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-            <TextView
-                android:id="@+id/tvDescAl2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvDescAl"
-                android:fontFamily="sans-serif-medium"
-                android:text="Every Letter Every Sign!"
-                android:layout_marginTop="2dp"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rlNumbers"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/numbers_card"
-            android:padding="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rlAlphabet">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tvNumber"
+            <RelativeLayout
+                android:id="@+id/rlAlphabet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_medium"
-                android:text="Alphabet"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:gravity="right"/>
+                android:background="@drawable/alphabet_card"
+                android:padding="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tvDescNum"
+                <TextView
+                    android:id="@+id/tvAlphabet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="Alphabet"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/tvDescAl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvAlphabet"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/bg_attr"
+                    android:fontFamily="@font/inter"
+                    android:padding="2dp"
+                    android:text="26 Letters"
+                    android:textColor="@color/blue6"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvDescAl2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvDescAl"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Every Letter Every Sign!"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlNumbers"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="302dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvNumber"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/bg_attr"
-                android:fontFamily="@font/inter"
-                android:padding="2dp"
-                android:text="0-9"
-                android:textColor="@color/blue6"
-                android:textSize="12sp"
-                android:gravity="right" />
+                android:layout_marginTop="20dp"
+                android:background="@drawable/numbers_card"
+                android:padding="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rlAlphabet">
 
-            <TextView
-                android:id="@+id/tvDescNum2"
+                <TextView
+                    android:id="@+id/tvNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="Number"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:gravity="right" />
+
+                <TextView
+                    android:id="@+id/tvDescNum"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="302dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvNumber"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/bg_attr"
+                    android:fontFamily="@font/inter"
+                    android:padding="2dp"
+                    android:text="0-9"
+                    android:textColor="@color/blue6"
+                    android:textSize="12sp"
+                    android:gravity="right" />
+
+                <TextView
+                    android:id="@+id/tvDescNum2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvDescNum"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Learn, sign, and count!"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:gravity="right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlQuiz"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvDescNum"
-                android:layout_marginTop="2dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Every Letter Every Sign!"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:gravity="right"/>
-        </RelativeLayout>
+                android:layout_marginTop="20dp"
+                android:background="@drawable/quiz_card"
+                android:padding="20dp"
+                android:clickable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rlNumbers">
 
-        <RelativeLayout
-            android:id="@+id/rlQuiz"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/quiz_card"
-            android:padding="20dp"
-            android:clickable="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rlNumbers">
+                <TextView
+                    android:id="@+id/tvQuiz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="Quiz"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/tvQuiz"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_medium"
-                android:text="Alphabet"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
+                <TextView
+                    android:id="@+id/tvDescQuiz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvQuiz"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/bg_attr"
+                    android:fontFamily="@font/inter"
+                    android:padding="2dp"
+                    android:text="Multiple Choice"
+                    android:textColor="@color/blue6"
+                    android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/tvDescQuiz"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvQuiz"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/bg_attr"
-                android:fontFamily="@font/inter"
-                android:padding="2dp"
-                android:text="26 Letter"
-                android:textColor="@color/blue6"
-                android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/tvDescQuiz2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvDescQuiz"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Get ready to quiz and conquer!"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tvDescQuiz2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvDescQuiz"
-                android:layout_marginTop="2dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Every Letter Every Sign!"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-        </RelativeLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

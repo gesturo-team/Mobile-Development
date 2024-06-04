@@ -1,7 +1,10 @@
 package com.example.myapplication.data.model
 
-class UserModel (
+
+data class UserModel(
     val email: String,
     val token: String,
-    val isLogin: Boolean = false
+    val isLoggedIn: Boolean,
+    val fullName: String? = null
 )
+
