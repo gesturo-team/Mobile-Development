@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -54,7 +53,9 @@
                     android:fontFamily="@font/inter_medium"
                     android:text="Alphabet"
                     android:textColor="@color/white"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:gravity="start"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/tvDescAl"
@@ -64,10 +65,12 @@
                     android:layout_marginTop="2dp"
                     android:background="@drawable/bg_attr"
                     android:fontFamily="@font/inter"
-                    android:padding="2dp"
+                    android:padding="4dp"
                     android:text="26 Letters"
                     android:textColor="@color/blue6"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:gravity="start"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/tvDescAl2"
@@ -76,15 +79,18 @@
                     android:layout_below="@id/tvDescAl"
                     android:layout_marginTop="2dp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Every Letter Every Sign!"
+                    android:text="Every Letter, Every Sign!"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:gravity="start"
+                    android:textAlignment="viewStart" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rlNumbers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="end"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/numbers_card"
                 android:padding="20dp"
@@ -94,32 +100,33 @@
 
                 <TextView
                     android:id="@+id/tvNumber"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_medium"
-                    android:text="Number"
+                    android:gravity="start"
+                    android:text="Numbers"
+                    android:textAlignment="viewStart"
                     android:textColor="@color/white"
-                    android:textSize="24sp"
-                    android:gravity="right" />
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/tvDescNum"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="302dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvNumber"
                     android:layout_marginTop="2dp"
                     android:background="@drawable/bg_attr"
                     android:fontFamily="@font/inter"
-                    android:padding="2dp"
+                    android:padding="4dp"
                     android:text="0-9"
                     android:textColor="@color/blue6"
                     android:textSize="12sp"
-                    android:gravity="right" />
+                    android:gravity="start"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/tvDescNum2"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvDescNum"
                     android:layout_marginTop="2dp"
@@ -127,7 +134,8 @@
                     android:text="Learn, sign, and count!"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    android:gravity="right" />
+                    android:gravity="start"
+                    android:textAlignment="viewStart" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -149,7 +157,9 @@
                     android:fontFamily="@font/inter_medium"
                     android:text="Quiz"
                     android:textColor="@color/white"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:gravity="start"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/tvDescQuiz"
@@ -159,10 +169,12 @@
                     android:layout_marginTop="2dp"
                     android:background="@drawable/bg_attr"
                     android:fontFamily="@font/inter"
-                    android:padding="2dp"
+                    android:padding="4dp"
                     android:text="Multiple Choice"
                     android:textColor="@color/blue6"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:gravity="start"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/tvDescQuiz2"
@@ -173,7 +185,9 @@
                     android:fontFamily="sans-serif-medium"
                     android:text="Get ready to quiz and conquer!"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:gravity="start"
+                    android:textAlignment="viewStart" />
             </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

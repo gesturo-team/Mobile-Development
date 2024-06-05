@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentLearnBinding
+import com.example.myapplication.ui.alphabet.AlphabetActivity
+import com.example.myapplication.ui.alphabet.DetailAlphabetActivity
 import com.example.myapplication.ui.number.NumberActivity
 import com.example.myapplication.ui.quiz.QuizActivity
 
@@ -48,7 +50,7 @@ class LearnFragment : Fragment() {
             activity?.startActivity(numberIntent)
         }
         binding.rlAlphabet.setOnClickListener {
-            val alphabetIntent = Intent(activity, NumberActivity::class.java)
+            val alphabetIntent = Intent(activity, AlphabetActivity::class.java)
             activity?.startActivity(alphabetIntent)
         }
     }

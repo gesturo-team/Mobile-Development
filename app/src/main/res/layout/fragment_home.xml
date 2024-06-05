@@ -100,10 +100,12 @@
                     android:id="@+id/btnCamera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="end"
                     android:backgroundTint="@color/bg_btn_main"
-                    android:text="Start"
                     android:fontFamily="@font/inter_semibold"
-                    android:textColor="@color/white"/>
+                    android:layout_marginTop="46dp"
+                    android:text="Start"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
             <!-- Second column -->

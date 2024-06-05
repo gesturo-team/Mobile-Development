@@ -5,10 +5,59 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.alphabet.AlphabetActivity">
-<!--    <androidx.recyclerview.widget.RecyclerView-->
+    tools:context=".ui.alphabet.AlphabetActivity"
+    android:background="@color/bg_grey">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/navAlphabet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/nav_back"
+        app:titleTextColor="@color/blue5"
+        app:title="Alphabet" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvItem"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/navAlphabet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/grid_item" />
+
+    <ProgressBar
+        android:id="@+id/progressAlphabet"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:progressTint="@color/blue6"
+        android:progress="75"
+        android:progressBackgroundTint="@color/blue6"
+        app:layout_constraintBottom_toBottomOf="@+id/rvItem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rvItem" />
+
+    <!--    <ProgressBar-->
+<!--        android:id="@+id/progressAlphabet"-->
+<!--        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"-->
 <!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        tools:listitem="@layout/grid_item"/>-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="40dp"-->
+<!--        android:progress="50"-->
+<!--        android:progressBackgroundTint="@color/blue6"-->
+<!--        android:progressTint="@color/blue6"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

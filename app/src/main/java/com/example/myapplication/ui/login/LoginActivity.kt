@@ -1,22 +1,30 @@
 package com.example.myapplication.ui.login
-
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.TextPaint
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
+import android.util.Patterns
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.myapplication.R
+import androidx.core.content.ContextCompat
 import com.example.myapplication.data.model.UserModel
 import com.example.myapplication.databinding.ActivityLoginBinding
 import com.example.myapplication.factory.AuthViewModelFactory
 import com.example.myapplication.ui.main.MainActivity
+import com.example.myapplication.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -25,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -33,16 +42,39 @@ class LoginActivity : AppCompatActivity() {
         setupView()
         setupAction()
 
-        viewModel.isError.observe(this) {isError ->
+        viewModel.isError.observe(this) { isError ->
             Toast.makeText(this, isError, Toast.LENGTH_SHORT).show()
         }
-//        enableEdgeToEdge()
-//        setContentView(R.layout.activity_login)
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
+
+        val textSpan = "Don't have an account? Sign Up Now!"
+        val stringSpan = SpannableString(textSpan)
+
+        val black = ForegroundColorSpan(Color.BLACK)
+        stringSpan.setSpan(black, 0, 22, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        val blue = ForegroundColorSpan(Color.parseColor("#001E6D"))
+        stringSpan.setSpan(blue, 23, 35, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        val clickableSpan = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            override fun updateDrawState(ds: TextPaint) {
+                super.updateDrawState(ds)
+                ds.color = Color.parseColor("#001E6D")
+                ds.isUnderlineText = false
+            }
+        }
+
+        stringSpan.setSpan(clickableSpan, 23, 35, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        val bold = StyleSpan(Typeface.BOLD)
+        stringSpan.setSpan(bold, 23, 35, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        binding.tvLogin.text = stringSpan
+        binding.tvLogin.movementMethod = LinkMovementMethod.getInstance()
     }
 
     private fun setupView() {
@@ -60,21 +92,44 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.btnLogin.setOnClickListener {
-            val email = binding.edLoginEmail.text.toString()
-            val password = binding.edLoginPass.text.toString()
-            viewModel.saveLogin(email, password)
-            viewModel.loginResult.observe(this) {response ->
-                if (response.success!!){
-                    val token = response.authResult?.token
-                    if (token != null) {
-                        val userModel = UserModel(email, token, true)
-                        viewModel.saveSession(userModel)
-                        showSuccessDialog()
+            val email = binding.edLoginEmail.text.toString().trim()
+            val password = binding.edLoginPass.text.toString().trim()
+
+            if (validateInputs(email, password)) {
+                viewModel.saveLogin(email, password)
+                viewModel.loginResult.observe(this) { response ->
+                    if (response.success!!) {
+                        val token = response.authResult?.token
+                        if (token != null) {
+                            val userModel = UserModel(email, token, true)
+                            viewModel.saveSession(userModel)
+                            showSuccessDialog()
+                        } else {
+                            showErrorDialog()
+                        }
                     } else {
                         showErrorDialog()
                     }
                 }
             }
+        }
+    }
+
+    private fun validateInputs(email: String, password: String): Boolean {
+        return when {
+            email.isEmpty() -> {
+                Toast.makeText(this, "Email is required.", Toast.LENGTH_SHORT).show()
+                false
+            }
+            !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                Toast.makeText(this, "Invalid email address.", Toast.LENGTH_SHORT).show()
+                false
+            }
+            password.isEmpty() -> {
+                Toast.makeText(this, "Password is required.", Toast.LENGTH_SHORT).show()
+                false
+            }
+            else -> true
         }
     }
 
@@ -98,6 +153,7 @@ class LoginActivity : AppCompatActivity() {
             setNegativeButton("Masuk Gagal") { _, _ ->
                 Toast.makeText(context, "Masuk Gagal", Toast.LENGTH_SHORT).show()
             }
-        }
+        }.create().show()
     }
 }
+

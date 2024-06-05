@@ -5,6 +5,66 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.alphabet.DetailAlphabetActivity">
+    tools:context=".ui.alphabet.DetailAlphabetActivity"
+    android:background="@color/bg_grey">
 
+    <ImageView
+        android:id="@+id/ivDetailAlphabet"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvValue"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivDetailAlphabet" >
+        <TextView
+            android:id="@+id/tvAlphabet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:fontFamily="@font/inter_bold"
+            android:textSize="24sp"
+            android:textColor="@color/blue6"/>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnTry"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/bg_btn_main"
+        android:text="TRY IT NOW"
+        android:textColor="@color/white"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvValue" />
+
+    <ProgressBar
+        android:id="@+id/progressDetailAlphabet"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="100dp"
+        android:progressTint="@color/blue6"
+        android:progress="75"
+        android:progressBackgroundTint="@color/blue6"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/ivDetailAlphabet"
+        app:layout_constraintEnd_toEndOf="@+id/ivDetailAlphabet"
+        app:layout_constraintStart_toStartOf="@+id/ivDetailAlphabet"
+        app:layout_constraintTop_toTopOf="@+id/ivDetailAlphabet" />
 </androidx.constraintlayout.widget.ConstraintLayout>
