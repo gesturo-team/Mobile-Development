@@ -9,6 +9,7 @@ import com.example.myapplication.data.model.UserModel
 import com.example.myapplication.data.pref.MainRepository
 import com.example.myapplication.data.pref.UserRepository
 import com.example.myapplication.data.response.AlphabetResponse
+import com.example.myapplication.data.response.NumberResponse
 import kotlinx.coroutines.launch
 
 class MainViewModel(
@@ -20,6 +21,9 @@ class MainViewModel(
 
     private val _alphabet = MutableLiveData<AlphabetResponse>()
     val alphabet: LiveData<AlphabetResponse> = _alphabet
+
+    private val _number = MutableLiveData<NumberResponse>()
+    val number: LiveData<NumberResponse> = _number
 
     fun getSession(): LiveData<UserModel> {
         return repository.getSession().asLiveData()
@@ -39,6 +43,20 @@ class MainViewModel(
                 _alphabet.value = alphabetResponse
             } catch (e: Exception) {
                 _alphabet.value = AlphabetResponse(null, success = false, message = e.message)
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+
+    fun getNumber(){
+        _isLoading.value = true
+        viewModelScope.launch {
+            try {
+                val numberResponse = repository.getNumber()
+                _number.value = numberResponse
+            } catch (e: Exception) {
+                _number.value = NumberResponse(null, success = false, message = e.message)
             } finally {
                 _isLoading.value = false
             }

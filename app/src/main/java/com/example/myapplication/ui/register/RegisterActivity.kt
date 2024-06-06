@@ -12,22 +12,32 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityLoginBinding
 import com.example.myapplication.databinding.ActivityRegisterBinding
+import com.example.myapplication.factory.AuthViewModelFactory
 import com.example.myapplication.ui.login.LoginActivity
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
+    private val registerViewModel by viewModels<RegisterViewModel> {
+        AuthViewModelFactory.getInstance(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setupAction()
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -63,5 +73,70 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.tvRegister.text = stringSpan
         binding.tvRegister.movementMethod = LinkMovementMethod.getInstance()
+
+        registerViewModel.errorReg.observe(this) { errors ->
+            errors?.let {
+                val errorMessage = it.joinToString(separator = "\n") { errorItem ->
+                    errorItem?.msg ?: "Unknown error"
+                }
+                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        registerViewModel.registerResult.observe(this) { response ->
+            response?.let {
+                if (it.success == true) {
+                    showSuccessDialog()
+                } else {
+                    val errorMessage = it.errors?.joinToString(separator = "\n") { errorItem ->
+                        errorItem?.msg ?: "Unknown error"
+                    } ?: "Email is already registered"
+                    showToast(errorMessage)
+                }
+            } ?: run {
+                showToast("Unexpected error")
+            }
+        }
+
+    }
+
+    private fun showToast(errorMessage: String) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showSuccessDialog() {
+        val firstName = binding.edRegisterFirstName.text.toString()
+        AlertDialog.Builder(this).apply {
+            setTitle("Yeah!")
+            setMessage("Hi $firstName, your account is ready. Log in now and start learning!")
+            setPositiveButton("Continue") { _, _ ->
+                loginActivity()
+                finish()
+            }
+            create()
+            show()
+        }
+    }
+
+    private fun loginActivity() {
+        startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+        finish()
+    }
+
+    private fun setupAction() {
+        binding.btnReg.setOnClickListener {
+            postRegister()
+        }
+    }
+
+    private fun postRegister() {
+        binding.apply {
+            registerViewModel.getRegister(
+                edRegisterFirstName.text.toString().trim(),
+                edRegisterLastName.text.toString().trim(),
+                edRegisterEmail.text.toString().trim(),
+                edRegisterPass.text.toString().trim()
+            )
+        }
     }
 }

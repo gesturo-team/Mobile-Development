@@ -8,6 +8,7 @@ import com.example.myapplication.data.pref.UserRepository
 import com.example.myapplication.di.AuthInjection
 import com.example.myapplication.ui.login.LoginViewModel
 import com.example.myapplication.ui.main.MainViewModel
+import com.example.myapplication.ui.register.RegisterViewModel
 
 class AuthViewModelFactory(private val repository: UserRepository) :
 ViewModelProvider.NewInstanceFactory(){
@@ -18,6 +19,12 @@ ViewModelProvider.NewInstanceFactory(){
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(repository) as T
             }
+
+            modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
+                RegisterViewModel(repository) as T
+            }
+
+
 
 //            modelClass.isAssignableFrom(MainViewModel::class.java) -> {
 //                MainViewModel(repository) as T

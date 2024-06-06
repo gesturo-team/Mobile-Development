@@ -4,6 +4,7 @@ import com.example.myapplication.data.response.AlphabetResponse
 import com.example.myapplication.data.response.DetailAlphabetResponse
 import com.example.myapplication.data.response.LoginResponse
 import com.example.myapplication.data.response.NumberResponse
+import com.example.myapplication.data.response.RegisterResponse
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Field
@@ -15,6 +16,22 @@ import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ApiService {
+    @Multipart
+    @POST("register")
+    suspend fun register(
+        @Part("firstName") firstName: RequestBody,
+        @Part("lastName") lastName: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("password") password: RequestBody
+    ): RegisterResponse
+
+//    {
+//        "firstName": "John",
+//        "lastName": "Doe",
+//        "email": "john.doe@example.com",
+//        "password": "securepassword"
+//    }
+
     @Multipart
     @POST("login")
     suspend fun login(

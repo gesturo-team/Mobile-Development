@@ -32,6 +32,12 @@ class DetailAlphabetActivity : AppCompatActivity() {
         binding = ActivityDetailAlphabetBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.navDetailAlphabet)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        binding.navDetailAlphabet.setNavigationOnClickListener{
+            onBackPressed()
+        }
+
         val value = intent.getStringExtra(EXTRA_NAME)
         val bundle = Bundle()
         bundle.putString(EXTRA_NAME, value)
