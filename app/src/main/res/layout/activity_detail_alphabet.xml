@@ -8,6 +8,19 @@
     tools:context=".ui.alphabet.DetailAlphabetActivity"
     android:background="@color/bg_grey">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/navDetailAlphabet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/nav_back"
+        app:titleTextColor="@color/blue5"
+        app:title="Detail" />
+
     <ImageView
         android:id="@+id/ivDetailAlphabet"
         android:layout_width="260dp"
@@ -15,13 +28,13 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navDetailAlphabet"
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvValue"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="80dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
@@ -41,13 +54,13 @@
 
     <Button
         android:id="@+id/btnTry"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="54dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:backgroundTint="@color/bg_btn_main"
-        android:text="TRY IT NOW"
+        android:text="@string/try_it"
         android:textColor="@color/white"
         android:fontFamily="@font/inter_bold"
         android:textSize="14sp"
