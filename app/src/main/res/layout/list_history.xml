@@ -17,31 +17,41 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
 
                 <TextView
                     android:id="@+id/tvHistory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Quiz Name" />
+                    android:text="Alphabet Quiz"
+                    android:fontFamily="@font/inter_semibold"
+                    android:textSize="14sp"
+                    android:textColor="@color/blue6"/>
 
                 <TextView
                     android:id="@+id/tvScore"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Score"
+                    android:text="9/10"
+                    android:fontFamily="@font/inter_semibold"
+                    android:textColor="@color/bg_btn_main"
                     android:textAlignment="textEnd" />
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date" />
+                android:text="05/06/2024"
+                android:fontFamily="@font/inter_semibold"
+                android:textSize="12sp"
+                android:textColor="@color/grey4"/>
         </LinearLayout>
 
         <TextView

@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="20dp">
 
         <TextView
@@ -93,7 +93,7 @@
                     android:text="Sign Language Translator"
                     android:textColor="@color/blue6"
                     android:textSize="14sp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/inter_semibold"
                     />
 
                 <Button
@@ -133,7 +133,7 @@
                         android:text="Modules"
                         android:textColor="@color/blue6"
                         android:textSize="14sp"
-                        android:fontFamily="@font/inter_medium" />
+                        android:fontFamily="@font/inter_semibold" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -159,6 +159,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Quiz"
+                        android:fontFamily="@font/inter_semibold"
                         android:textColor="@color/blue6"
                         android:textSize="16sp" />
 
