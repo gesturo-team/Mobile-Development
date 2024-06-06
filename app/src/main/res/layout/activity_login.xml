@@ -101,9 +101,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/passTextView"
-                app:startIconDrawable="@drawable/txt_key">
+                app:startIconDrawable="@drawable/txt_key"
+                app:endIconMode="password_toggle">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.example.myapplication.ui.customview.MyInputText
                     android:id="@+id/ed_login_pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -119,7 +120,7 @@
                 android:layout_marginTop="24dp"
                 android:backgroundTint="@color/bg_btn_main"
                 android:fontFamily="@font/inter_bold"
-                android:text="LOG IN"
+                android:text="@string/btn_login"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
