@@ -13,4 +13,13 @@
     <string name="password">Password</string>
     <string name="name">Name</string>
     <string name="hi">Hi, </string>
+    <string name="flip">Flip Camera</string>
+    <string name="result">Result</string>
+    <string name="try_it">TRY IT NOW</string>
+    <string name="number">Number</string>
+    <string name="choose">Choose</string>
+    <string name="btn_signup">SIGN UP</string>
+    <string name="btn_login">LOG IN</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
 </resources>
