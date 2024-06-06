@@ -9,7 +9,7 @@
     android:background="@color/bg_grey">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/navAlphabet"
+        android:id="@+id/navNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -19,14 +19,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/nav_back"
         app:titleTextColor="@color/blue5"
-        app:title="Alphabet" />
+        app:title="@string/number" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvItem"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@id/navAlphabet"
+        app:layout_constraintTop_toBottomOf="@id/navNumber"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
