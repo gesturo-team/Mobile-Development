@@ -7,6 +7,7 @@ import com.example.myapplication.data.pref.MainRepository
 import com.example.myapplication.di.MainInjection
 import com.example.myapplication.ui.alphabet.DetailAlphabetViewModel
 import com.example.myapplication.ui.main.MainViewModel
+import com.example.myapplication.ui.number.DetailNumberViewModel
 
 class MainViewModelFactory(private val repository: MainRepository) :
     ViewModelProvider.NewInstanceFactory(){
@@ -22,6 +23,12 @@ class MainViewModelFactory(private val repository: MainRepository) :
             modelClass.isAssignableFrom(DetailAlphabetViewModel::class.java) -> {
                 DetailAlphabetViewModel(repository) as T
             }
+
+            modelClass.isAssignableFrom(DetailNumberViewModel::class.java) -> {
+                DetailNumberViewModel(repository) as T
+            }
+
+
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

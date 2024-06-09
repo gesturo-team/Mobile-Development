@@ -22,4 +22,6 @@
     <string name="btn_login">LOG IN</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
+    <string name="img_class_failed">Image Classifier Failed. Check log for more!!</string>
+    <string name="progress_text">%d/%d</string>
 </resources>

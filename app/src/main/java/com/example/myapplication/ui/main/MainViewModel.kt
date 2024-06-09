@@ -8,8 +8,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.model.UserModel
 import com.example.myapplication.data.pref.MainRepository
 import com.example.myapplication.data.pref.UserRepository
+import com.example.myapplication.data.response.AlphabetQuizResponse
 import com.example.myapplication.data.response.AlphabetResponse
 import com.example.myapplication.data.response.NumberResponse
+import com.example.myapplication.ui.quiz.alphabet.QuizAlphabetActivity
 import kotlinx.coroutines.launch
 
 class MainViewModel(
@@ -24,6 +26,9 @@ class MainViewModel(
 
     private val _number = MutableLiveData<NumberResponse>()
     val number: LiveData<NumberResponse> = _number
+
+    private val _quizAlphabet = MutableLiveData<AlphabetQuizResponse>()
+    val quizAlphabet: LiveData<AlphabetQuizResponse> = _quizAlphabet
 
     fun getSession(): LiveData<UserModel> {
         return repository.getSession().asLiveData()
@@ -61,5 +66,20 @@ class MainViewModel(
                 _isLoading.value = false
             }
         }
+    }
+
+    fun getQuizAlphabet(){
+        _isLoading.value = true
+        viewModelScope.launch {
+            try {
+                val quizAlphabetResponse = repository.getAlphabetQuiz()
+                _quizAlphabet.value = quizAlphabetResponse
+            } catch (e: Exception) {
+                _quizAlphabet.value = AlphabetQuizResponse(null, false)
+            } finally {
+                _isLoading.value = false
+            }
+        }
+
     }
 }

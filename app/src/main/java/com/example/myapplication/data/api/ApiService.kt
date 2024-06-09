@@ -1,12 +1,17 @@
 package com.example.myapplication.data.api
 
+import com.example.myapplication.data.response.AlphabetQuestionsItem
+import com.example.myapplication.data.response.AlphabetQuizResponse
 import com.example.myapplication.data.response.AlphabetResponse
 import com.example.myapplication.data.response.DetailAlphabetResponse
+import com.example.myapplication.data.response.DetailNumberResponse
 import com.example.myapplication.data.response.LoginResponse
 import com.example.myapplication.data.response.NumberResponse
 import com.example.myapplication.data.response.RegisterResponse
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -45,7 +50,16 @@ interface ApiService {
     @GET("dictionary/alphabet/{value}")
     suspend fun getAlphabetDetail(@Path("value") value: String): DetailAlphabetResponse
 
+    @GET("dictionary/number/{value}")
+    suspend fun getNumberDetail(@Path("value") value: String): DetailNumberResponse
+
     @GET("dictionary/number")
     suspend fun getNumber(): NumberResponse
+
+    @GET("/quizzes/type/alphabet")
+    suspend fun getQuizAlphabet(): AlphabetQuizResponse
+
+    @POST("/quizzes")
+    fun submitAnswers(@Body answers: List<AlphabetQuestionsItem>): Call<ResponseBody>
 
 }

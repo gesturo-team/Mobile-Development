@@ -7,4 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.quiz.QuizActivity">
 
+    <Button
+        android:id="@+id/btnAlphabet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/red"/>
+
+    <Button
+        android:id="@+id/btnNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btnAlphabet" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

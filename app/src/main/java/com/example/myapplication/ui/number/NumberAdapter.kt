@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.number
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,6 +11,7 @@ import com.example.myapplication.data.response.NumberListItem
 import com.example.myapplication.data.response.WordListItem
 import com.example.myapplication.databinding.GridItemBinding
 import com.example.myapplication.ui.alphabet.AlphabetAdapter
+import com.example.myapplication.ui.alphabet.DetailAlphabetActivity
 
 class NumberAdapter : ListAdapter<NumberListItem, NumberAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
@@ -40,7 +42,19 @@ class NumberAdapter : ListAdapter<NumberListItem, NumberAdapter.MyViewHolder>(DI
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        if (item!=null) {
+            holder.bind(item)
+            holder.itemView.setOnClickListener {
+                onItemClickCallback?.onItemClicked(item)
+                val detailIntent =
+                    Intent(holder.itemView.context, DetailNumberActivity::class.java).also {
+                        it.putExtra(DetailNumberActivity.EXTRA_ID, item.id)
+                        it.putExtra(DetailNumberActivity.EXTRA_NAME, item.value)
+                        it.putExtra(DetailNumberActivity.EXTRA_PICT, item.urlImage)
+                    }
+                holder.itemView.context.startActivity(detailIntent)
+            }
+        }
     }
 
     interface OnItemClickCallback {

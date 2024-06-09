@@ -20,6 +20,7 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        mlModelBinding = true
     }
 
     buildTypes {
@@ -51,14 +52,28 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.tensorflow.lite.support)
+    implementation(libs.tensorflow.lite.metadata)
+    implementation(libs.tensorflow.lite.gpu)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.androidx.camera.camera2)
-    implementation(libs.camera.lifecycle)
-    implementation(libs.camera.view)
+//    implementation(libs.androidx.camera.camera2)
+//    implementation(libs.camera.lifecycle)
+//    implementation(libs.camera.view)
+
+    //Camera
+//    implementation ("androidx.camera:camera-core:1.2.0")
+//    implementation ("androidx.camera:camera-camera2:1.2.0")
+//    implementation ("androidx.camera:camera-lifecycle:1.2.0")
+//    implementation ("androidx.camera:camera-view:1.2.0")
+    val cameraxVersion = "1.3.0"
+    implementation("androidx.camera:camera-camera2:$cameraxVersion")
+    implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
+    implementation("androidx.camera:camera-view:$cameraxVersion")
+
 
     //Glide
     implementation(libs.glide)
@@ -73,5 +88,9 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
     implementation(libs.androidx.lifecycle.runtime.ktx) //untuk lifecycleScope
+
+    //Object Detection
+    implementation(libs.tensorflow.lite.task.vision)
+
     
 }

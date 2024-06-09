@@ -130,7 +130,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Modules"
+                        android:text="Dictionary"
                         android:textColor="@color/blue6"
                         android:textSize="14sp"
                         android:fontFamily="@font/inter_semibold" />

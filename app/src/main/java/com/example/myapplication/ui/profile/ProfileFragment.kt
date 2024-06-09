@@ -92,13 +92,13 @@ class ProfileFragment : Fragment() {
 
         binding.btnLogout.setOnClickListener {
             mainViewModel.logout()
-            requireActivity().finish()
+//            requireActivity().finish()
         }
     }
 
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
 

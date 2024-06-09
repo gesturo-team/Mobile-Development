@@ -5,6 +5,79 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.number.DetailNumberActivity">
+    tools:context=".ui.number.DetailNumberActivity"
+    android:background="@color/bg_grey">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/navDetailNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/nav_back"
+        app:titleTextColor="@color/blue5"
+        app:title="Detail" />
+
+    <ImageView
+        android:id="@+id/ivDetailAlphabet"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navDetailNumber"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvValue"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivDetailAlphabet" >
+        <TextView
+            android:id="@+id/tvNumber"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:fontFamily="@font/inter_bold"
+            android:textSize="24sp"
+            android:textColor="@color/blue6"/>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnTry"
+        android:layout_width="wrap_content"
+        android:layout_height="54dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/bg_btn_main"
+        android:text="@string/try_it"
+        android:textColor="@color/white"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvValue" />
+
+    <ProgressBar
+        android:id="@+id/progressDetailNumber"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="100dp"
+        android:progressTint="@color/blue6"
+        android:progress="75"
+        android:progressBackgroundTint="@color/blue6"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/ivDetailAlphabet"
+        app:layout_constraintEnd_toEndOf="@+id/ivDetailAlphabet"
+        app:layout_constraintStart_toStartOf="@+id/ivDetailAlphabet"
+        app:layout_constraintTop_toTopOf="@+id/ivDetailAlphabet" />
 </androidx.constraintlayout.widget.ConstraintLayout>
