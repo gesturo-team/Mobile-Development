@@ -4,6 +4,9 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -62,16 +65,27 @@ class CameraActivity : AppCompatActivity() {
                 else CameraSelector.DEFAULT_BACK_CAMERA
             startCamera()
         }
-    }
 
-    public override fun onResume() {
-        super.onResume()
-        if (allPermissionsGranted()) {
-            startCamera()
+        val choices = listOf("Alphabet", "Number")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, choices)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinner.adapter = adapter
+
+        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                when (choices[position]) {
+                    "Alphabet" -> translateAlphabet()
+                    "Number" -> translateNumber()
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Handle case when nothing is selected if needed
+            }
         }
     }
 
-    private fun startCamera() {
+    private fun translateNumber() {
         imageClassifierHelper = ImageClassifierHelper(
             context = this,
             classifierListener = object : ImageClassifierHelper.ClassifierListener {
@@ -105,6 +119,88 @@ class CameraActivity : AppCompatActivity() {
             }
         )
 
+        startCamera()
+    }
+
+    private fun translateAlphabet() {
+        imageClassifierHelper = ImageClassifierHelper(
+            context = this,
+            classifierListener = object : ImageClassifierHelper.ClassifierListener {
+                override fun onError(error: String) {
+                    runOnUiThread {
+                        Toast.makeText(this@CameraActivity, error, Toast.LENGTH_SHORT).show()
+                    }
+                    Log.e(TAG, "Classifier Error: $error")
+                }
+
+                override fun onResult(result: List<Classifications>?) {
+                    runOnUiThread {
+                        result?.let { classifications ->
+                            if (classifications.isNotEmpty() && classifications[0].categories.isNotEmpty()) {
+                                val categories =
+                                    classifications[0].categories.sortedByDescending { it?.score }
+                                val showResult = categories.joinToString("\n") {
+                                    "${it.label} "
+//                                    + NumberFormat.getPercentInstance()
+//                                        .format(it.score).trim()
+                                }
+                                binding.tvResult.text = showResult
+                                Log.d(TAG, "Classification result: $showResult")
+                            } else {
+                                binding.tvResult.text = ""
+                                Log.d(TAG, "No classification result.")
+                            }
+                        }
+                    }
+                }
+            }
+        )
+
+        startCamera()
+    }
+
+    public override fun onResume() {
+        super.onResume()
+        if (allPermissionsGranted()) {
+            startCamera()
+        }
+    }
+
+
+    private fun startCamera() {
+//        imageClassifierHelper = ImageClassifierHelper(
+//            context = this,
+//            classifierListener = object : ImageClassifierHelper.ClassifierListener {
+//                override fun onError(error: String) {
+//                    runOnUiThread {
+//                        Toast.makeText(this@CameraActivity, error, Toast.LENGTH_SHORT).show()
+//                    }
+//                    Log.e(TAG, "Classifier Error: $error")
+//                }
+//
+//                override fun onResult(result: List<Classifications>?) {
+//                    runOnUiThread {
+//                        result?.let { classifications ->
+//                            if (classifications.isNotEmpty() && classifications[0].categories.isNotEmpty()) {
+//                                val categories =
+//                                    classifications[0].categories.sortedByDescending { it?.score }
+//                                val showResult = categories.joinToString("\n") {
+//                                    "${it.label} "
+////                                    + NumberFormat.getPercentInstance()
+////                                        .format(it.score).trim()
+//                                }
+//                                binding.tvResult.text = showResult
+//                                Log.d(TAG, "Classification result: $showResult")
+//                            } else {
+//                                binding.tvResult.text = ""
+//                                Log.d(TAG, "No classification result.")
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        )
+
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
         cameraProviderFuture.addListener({
@@ -119,7 +215,10 @@ class CameraActivity : AppCompatActivity() {
                 .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888)
                 .build()
             imageAnalyzer.setAnalyzer(Executors.newSingleThreadExecutor()) { image ->
-                imageClassifierHelper.classifyImage(image)
+                when (binding.spinner.selectedItem.toString()) {
+                    "Alphabet" -> imageClassifierHelper.classifyAlphabet(image)
+                    "Number" -> imageClassifierHelper.classifyNumber(image)
+                }
             }
 
             val preview = Preview.Builder()

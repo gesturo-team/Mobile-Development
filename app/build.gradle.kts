@@ -92,5 +92,8 @@ dependencies {
     //Object Detection
     implementation(libs.tensorflow.lite.task.vision)
 
+    //lottie
+    implementation("com.airbnb.android:lottie:3.7.2")
+
     
 }

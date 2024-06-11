@@ -10,7 +10,8 @@
     <androidx.camera.view.PreviewView
         android:id="@+id/viewCamera"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+    </androidx.camera.view.PreviewView>
 
     <TextView
         android:id="@+id/tvResult"
@@ -28,6 +29,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="@string/result" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:minHeight="48dp"
+        android:backgroundTint="@color/blue6"
+        app:layout_constraintBottom_toTopOf="@+id/tvResult"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/btnSwitch"
