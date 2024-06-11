@@ -17,7 +17,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
     suspend fun saveSession(userModel: UserModel) {
         dataStore.edit { pref ->
             pref[EMAIL_KEY] = userModel.email
-            pref[FULL_NAME_KEY] = userModel.fullName ?: "" // Save fullName
+            pref[FULL_NAME_KEY] = userModel.fullName ?: ""
             pref[TOKEN_KEY] = userModel.token
             pref[IS_LOGIN_KEY] = userModel.isLoggedIn
         }
@@ -29,7 +29,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
                 preferences[EMAIL_KEY] ?: "",
                 preferences[TOKEN_KEY] ?: "",
                 preferences[IS_LOGIN_KEY] ?: false,
-                preferences[FULL_NAME_KEY] ?: "" // Get fullName
+                preferences[FULL_NAME_KEY] ?: ""
             )
         }
     }
@@ -44,7 +44,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         @Volatile
         private var INSTANCE: UserPreferences? = null
         private val EMAIL_KEY = stringPreferencesKey("email")
-        private val FULL_NAME_KEY = stringPreferencesKey("fullName") // Add fullName key
+        private val FULL_NAME_KEY = stringPreferencesKey("fullName")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")
 

@@ -135,9 +135,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showSuccessDialog() {
         AlertDialog.Builder(this).apply {
-            setTitle("Sukses")
-            setMessage("Yeay, Kamu Berhasil Masuk")
-            setPositiveButton("Lanjut") { _, _ ->
+            setTitle("Success!")
+            setMessage("Yeay, you've already logged in!")
+            setPositiveButton("Continue") { _, _ ->
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)

@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.quiz.alphabet.QuizAlphabetActivity">
+    tools:context=".ui.quiz.QuizDetailActivity"
+    android:background="@color/bg_grey">
 
     <TextView
         android:id="@+id/progressTextView"
@@ -20,31 +21,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
 
-    <TextView
-        android:id="@+id/timerTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="00:00"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/progressTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
+<!--    <TextView-->
+<!--        android:id="@+id/timerTextView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="00:00"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/progressTextView"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_marginTop="8dp"/>-->
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
+        android:layout_marginTop="8dp"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/timerTextView" />
+        app:layout_constraintTop_toBottomOf="@id/progressTextView" />
 
     <Button
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="54dp"
         android:layout_marginTop="16dp"
-        android:text="NEXT"
+        android:text="SUBMIT"
         android:backgroundTint="@color/bg_btn_main"
         android:textColor="@color/white"
         android:fontFamily="@font/inter_bold"

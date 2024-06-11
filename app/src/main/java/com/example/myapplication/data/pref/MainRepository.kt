@@ -2,12 +2,14 @@ package com.example.myapplication.data.pref
 
 import com.example.myapplication.data.api.ApiService
 import com.example.myapplication.data.model.UserModel
-import com.example.myapplication.data.response.AlphabetQuizResponse
+import com.example.myapplication.data.response.QuizData
+import com.example.myapplication.data.response.QuizResponse
 import com.example.myapplication.data.response.AlphabetResponse
 import com.example.myapplication.data.response.DetailAlphabetResponse
 import com.example.myapplication.data.response.DetailNumberResponse
+import com.example.myapplication.data.response.HistoryResponse
 import com.example.myapplication.data.response.NumberResponse
-import com.example.myapplication.ui.alphabet.DetailAlphabetActivity
+import com.example.myapplication.data.response.SubmitAlphabetResponse
 import kotlinx.coroutines.flow.Flow
 
 class MainRepository private constructor(
@@ -31,8 +33,16 @@ class MainRepository private constructor(
         return apiService.getNumberDetail(value)
     }
 
-    suspend fun getAlphabetQuiz(): AlphabetQuizResponse {
+    suspend fun getAlphabetQuiz(): QuizResponse {
         return apiService.getQuizAlphabet()
+    }
+
+    suspend fun getNumberQuiz(): QuizResponse {
+        return apiService.getQuizNumber()
+    }
+
+    suspend fun getHistory(): HistoryResponse {
+        return apiService.getHistory()
     }
 
     fun getSession(): Flow<UserModel> {
@@ -42,6 +52,10 @@ class MainRepository private constructor(
     suspend fun logout() {
         userPreferences.logout()
     }
+    suspend fun submitAnswer(answer: QuizData): SubmitAlphabetResponse {
+        return apiService.submitAnswers(answer)
+    }
+
 
     companion object {
         fun getInstance(

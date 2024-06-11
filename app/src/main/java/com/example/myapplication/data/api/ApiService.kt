@@ -1,19 +1,17 @@
 package com.example.myapplication.data.api
 
-import com.example.myapplication.data.response.AlphabetQuestionsItem
-import com.example.myapplication.data.response.AlphabetQuizResponse
+import com.example.myapplication.data.response.QuizData
+import com.example.myapplication.data.response.QuizResponse
 import com.example.myapplication.data.response.AlphabetResponse
 import com.example.myapplication.data.response.DetailAlphabetResponse
 import com.example.myapplication.data.response.DetailNumberResponse
+import com.example.myapplication.data.response.HistoryResponse
 import com.example.myapplication.data.response.LoginResponse
 import com.example.myapplication.data.response.NumberResponse
 import com.example.myapplication.data.response.RegisterResponse
+import com.example.myapplication.data.response.SubmitAlphabetResponse
 import okhttp3.RequestBody
-import okhttp3.ResponseBody
-import retrofit2.Call
 import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
@@ -57,9 +55,15 @@ interface ApiService {
     suspend fun getNumber(): NumberResponse
 
     @GET("/quizzes/type/alphabet")
-    suspend fun getQuizAlphabet(): AlphabetQuizResponse
+    suspend fun getQuizAlphabet(): QuizResponse
+
+    @GET("/quizzes/type/number")
+    suspend fun getQuizNumber():QuizResponse
 
     @POST("/quizzes")
-    fun submitAnswers(@Body answers: List<AlphabetQuestionsItem>): Call<ResponseBody>
+    suspend fun submitAnswers(@Body answers: QuizData): SubmitAlphabetResponse
+
+    @GET("/quizzes/history")
+    suspend fun getHistory() : HistoryResponse
 
 }
