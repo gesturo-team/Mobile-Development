@@ -8,10 +8,11 @@
     tools:context=".ui.main.MainActivity">
 
     <FrameLayout
+        android:id="@+id/main_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/main_frame"
-        android:layout_above="@+id/navBottom"/>
+        android:layout_above="@+id/navBottom"
+        android:layout_marginBottom="-3dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navBottom"
@@ -20,7 +21,8 @@
         android:layout_alignParentBottom="true"
         app:menu="@menu/nav_bottom"
         android:background="@color/white"
-        app:itemIconTint="@null"
+        app:itemIconTint="@color/bottom_nav_selector"
+        app:itemTextColor="@color/bottom_nav_selector"
         app:itemIconSize="24dp"
         app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"/>
 

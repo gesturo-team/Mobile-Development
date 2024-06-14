@@ -26,6 +26,7 @@ class DetailAlphabetActivity : AppCompatActivity() {
     private val detailAlphabetViewModel by viewModels<DetailAlphabetViewModel> {
         MainViewModelFactory.getInstance(application)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,7 +35,7 @@ class DetailAlphabetActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.navDetailAlphabet)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        binding.navDetailAlphabet.setNavigationOnClickListener{
+        binding.navDetailAlphabet.setNavigationOnClickListener {
             onBackPressed()
         }
 
@@ -42,7 +43,7 @@ class DetailAlphabetActivity : AppCompatActivity() {
         val bundle = Bundle()
         bundle.putString(EXTRA_NAME, value)
 
-        detailAlphabetViewModel.isLoading.observe(this) {isLoading ->
+        detailAlphabetViewModel.isLoading.observe(this) { isLoading ->
             if (isLoading) {
                 binding.progressDetailAlphabet.visibility = View.VISIBLE
             } else {
@@ -52,7 +53,7 @@ class DetailAlphabetActivity : AppCompatActivity() {
 
         detailAlphabetViewModel.getAlphabetDetail(value.toString())
 
-        detailAlphabetViewModel.detail.observe(this) {detailAlphabetResponse ->
+        detailAlphabetViewModel.detail.observe(this) { detailAlphabetResponse ->
             if (detailAlphabetResponse.success!!) {
                 detailAlphabetResponse.data?.let { data ->
                     binding.tvAlphabet.text = data.value
@@ -67,12 +68,5 @@ class DetailAlphabetActivity : AppCompatActivity() {
             val intentCamera = Intent(this@DetailAlphabetActivity, CameraActivity::class.java)
             startActivity(intentCamera)
         }
-//        enableEdgeToEdge()
-//        setContentView(R.layout.activity_detail_alphabet)
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
     }
 }

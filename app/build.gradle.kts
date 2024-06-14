@@ -60,15 +60,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-//    implementation(libs.androidx.camera.camera2)
-//    implementation(libs.camera.lifecycle)
-//    implementation(libs.camera.view)
 
-    //Camera
-//    implementation ("androidx.camera:camera-core:1.2.0")
-//    implementation ("androidx.camera:camera-camera2:1.2.0")
-//    implementation ("androidx.camera:camera-lifecycle:1.2.0")
-//    implementation ("androidx.camera:camera-view:1.2.0")
     val cameraxVersion = "1.3.0"
     implementation("androidx.camera:camera-camera2:$cameraxVersion")
     implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
@@ -78,6 +70,7 @@ dependencies {
     //Glide
     implementation(libs.glide)
 
+    //datastore
     implementation(libs.androidx.datastore.preferences)
 
     //api

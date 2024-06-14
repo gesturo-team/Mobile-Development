@@ -15,6 +15,8 @@ import com.example.myapplication.data.response.AlphabetResponse
 import com.example.myapplication.data.response.HistoryResponse
 import com.example.myapplication.data.response.NumberResponse
 import com.example.myapplication.data.response.SubmitAlphabetResponse
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 

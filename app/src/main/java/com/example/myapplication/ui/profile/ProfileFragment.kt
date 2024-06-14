@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentProfileBinding
 import com.example.myapplication.ui.main.MainViewModel
 import com.example.myapplication.factory.AuthViewModelFactory
@@ -40,14 +39,31 @@ class ProfileFragment : Fragment() {
         }
 
         binding.btnLogout.setOnClickListener {
-            mainViewModel.logout()
+//            mainViewModel.logout()
 //            requireActivity().finish()
+            showSuccessDialog()
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun showSuccessDialog() {
+        AlertDialog.Builder(requireContext()).apply {
+            setTitle("Are You Sure?")
+            setMessage("Do you want to logout")
+            setPositiveButton("Yes") { _, _ ->
+                mainViewModel.logout()
+                activity?.finish()
+            }
+            setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            create()
+            show()
+        }
     }
 }
 

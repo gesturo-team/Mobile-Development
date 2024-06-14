@@ -118,7 +118,7 @@
                     android:fontFamily="@font/inter"
                     android:padding="4dp"
                     android:text="0-9"
-                    android:textColor="@color/blue6"
+                    android:textColor="@color/bg_btn_main"
                     android:textSize="12sp"
                     android:gravity="start"
                     android:textAlignment="viewStart" />

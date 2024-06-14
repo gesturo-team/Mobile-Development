@@ -10,14 +10,14 @@ import com.bumptech.glide.Glide
 import com.example.myapplication.data.response.WordListItem
 import com.example.myapplication.databinding.GridItemBinding
 
-class AlphabetAdapter : ListAdapter<WordListItem, AlphabetAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class AlphabetAdapter : ListAdapter<WordListItem, AlphabetAdapter.AlphabetViewHolder>(DIFF_CALLBACK) {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    inner class MyViewHolder(private val binding: GridItemBinding) :
+    inner class AlphabetViewHolder(private val binding: GridItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: WordListItem) {
             Glide.with(binding.ivImg.context)
@@ -31,17 +31,17 @@ class AlphabetAdapter : ListAdapter<WordListItem, AlphabetAdapter.MyViewHolder>(
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlphabetViewHolder {
         val binding = GridItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyViewHolder(binding)
+        return AlphabetViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AlphabetViewHolder, position: Int) {
         val item = getItem(position)
         if (item!= null) {
             holder.bind(item)
             holder.itemView.setOnClickListener {
-                onItemClickCallback?.onItemClicked(item)
+                onItemClickCallback.onItemClicked(item)
                 val detailIntent =
                     Intent(holder.itemView.context, DetailAlphabetActivity::class.java).also {
                         it.putExtra(DetailAlphabetActivity.EXTRA_ID, item.id)

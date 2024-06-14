@@ -10,7 +10,7 @@ import com.example.myapplication.ui.main.MainViewModel
 import com.example.myapplication.ui.number.DetailNumberViewModel
 
 class MainViewModelFactory(private val repository: MainRepository) :
-    ViewModelProvider.NewInstanceFactory(){
+    ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -27,7 +27,6 @@ class MainViewModelFactory(private val repository: MainRepository) :
             modelClass.isAssignableFrom(DetailNumberViewModel::class.java) -> {
                 DetailNumberViewModel(repository) as T
             }
-
 
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

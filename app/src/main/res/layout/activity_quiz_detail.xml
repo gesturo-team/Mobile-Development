@@ -8,51 +8,64 @@
     tools:context=".ui.quiz.QuizDetailActivity"
     android:background="@color/bg_grey">
 
-    <TextView
-        android:id="@+id/progressTextView"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/navQuiz"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1/10"
-        android:fontFamily="@font/inter_bold"
-        android:textColor="@color/blue6"
-        android:textSize="20sp"
+        android:background="@color/white"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        app:navigationIcon="@drawable/nav_back"
+        app:title="Quiz"
+        app:titleTextColor="@color/blue5" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/timerTextView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="00:00"-->
-<!--        android:textSize="18sp"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/progressTextView"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:layout_marginTop="8dp"/>-->
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
-        android:layout_marginTop="8dp"
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="450dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/navQuiz"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/progressTextView" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <Button
-        android:id="@+id/nextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="54dp"
-        android:layout_marginTop="16dp"
-        android:text="SUBMIT"
-        android:backgroundTint="@color/bg_btn_main"
-        android:textColor="@color/white"
-        android:fontFamily="@font/inter_bold"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPager" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_marginTop="12dp"
+                android:id="@+id/progressTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                android:text="1/10"
+                android:textColor="@color/blue6"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="480dp" />
+
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="54dp"
+                android:layout_marginTop="16dp"
+                android:text="SUBMIT"
+                android:backgroundTint="@color/bg_btn_main"
+                android:textColor="@color/white"
+                android:fontFamily="@font/inter_bold"
+                android:textSize="14sp"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

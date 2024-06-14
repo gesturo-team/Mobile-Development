@@ -18,6 +18,9 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
     private val _isError = MutableLiveData<String>()
     val isError: LiveData<String> = _isError
 
+    private val _loading = MutableLiveData<Boolean>()
+    val loading : LiveData<Boolean> = _loading
+
     fun saveSession(userModel: UserModel) {
         viewModelScope.launch {
             repository.saveSession(userModel)
@@ -25,6 +28,7 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
     }
 
     fun saveLogin(email: String, password: String) {
+        _loading.value = true
         viewModelScope.launch {
             try {
                 val response = repository.login(email, password)
@@ -44,6 +48,8 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
                 val errorBody = Gson().fromJson(jsonInString, LoginResponse::class.java)
                 val errorMessage = errorBody.message
                 _isError.value = errorMessage ?: "Failed to login"
+            } finally {
+                _loading.value = false
             }
         }
     }

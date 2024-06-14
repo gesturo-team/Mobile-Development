@@ -20,7 +20,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myapplication.R
-import com.example.myapplication.databinding.ActivityLoginBinding
 import com.example.myapplication.databinding.ActivityRegisterBinding
 import com.example.myapplication.factory.AuthViewModelFactory
 import com.example.myapplication.ui.login.LoginActivity
@@ -83,6 +82,14 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
+        registerViewModel.loading.observe(this) { loading ->
+            if (loading == true) {
+                binding.progressRegister.visibility = View.VISIBLE
+            } else {
+                binding.progressRegister.visibility = View.GONE
+            }
+        }
+
         registerViewModel.registerResult.observe(this) { response ->
             response?.let {
                 if (it.success == true) {
@@ -123,9 +130,36 @@ class RegisterActivity : AppCompatActivity() {
         finish()
     }
 
+    private fun validateInput(firstName: String, lastName: String, email: String, password: String) : Boolean {
+        return when {
+            firstName.isEmpty() -> {
+                Toast.makeText(this, "Please enter your first name.", Toast.LENGTH_SHORT).show()
+                false
+            }
+            lastName.isEmpty() -> {
+                Toast.makeText(this, "Please enter your last name.", Toast.LENGTH_SHORT).show()
+                false
+            }email.isEmpty() -> {
+                Toast.makeText(this, "Please enter your email.", Toast.LENGTH_SHORT).show()
+                false
+            }password.isEmpty() -> {
+                Toast.makeText(this, "Please enter your last password.", Toast.LENGTH_SHORT).show()
+                false
+            }
+            else -> true
+        }
+    }
+
     private fun setupAction() {
         binding.btnReg.setOnClickListener {
-            postRegister()
+            val firstName = binding.edRegisterFirstName.text.toString().trim()
+            val lastName = binding.edRegisterLastName.text.toString().trim()
+            val email = binding.edRegisterEmail.text.toString().trim()
+            val password = binding.edRegisterPass.text.toString().trim()
+
+            if (validateInput(firstName,lastName, email, password)) {
+                postRegister()
+            }
         }
     }
 

@@ -16,9 +16,8 @@ import org.tensorflow.lite.task.vision.classifier.Classifications
 import org.tensorflow.lite.task.vision.classifier.ImageClassifier
 
 class ImageClassifierHelper(
-    private var threshold: Float = 0.1f,
+    private var threshold: Float = 0.4f,
     private var maxResult: Int = 1,
-    //model 2?
     private var modelName: String = "alphabet_v1_metadata.tflite",
     val context: Context,
     val classifierListener: ClassifierListener?
@@ -32,11 +31,9 @@ class ImageClassifierHelper(
     private var imageClassifier: ImageClassifier? = null
 
     init {
-        //dibikin 2?
         setupImageClassifier()
     }
 
-    //dibikin 2?
     private fun setupImageClassifier() {
         val optionsBuilder = ImageClassifier.ImageClassifierOptions.builder()
             .setScoreThreshold(threshold)
@@ -58,11 +55,6 @@ class ImageClassifierHelper(
         }
     }
 
-    //baru
-//    fun classifyImage(image: ImageProxy) {
-//        imageProcessing(image)
-//    }
-
     fun classifyAlphabet(image: ImageProxy) {
         modelName = "alphabet_v1_metadata.tflite"
         setupImageClassifier()
@@ -75,8 +67,7 @@ class ImageClassifierHelper(
         imageProcessing(image)
     }
 
-    //dibikin 2?
-    fun imageProcessing(image: ImageProxy) {
+    private fun imageProcessing(image: ImageProxy) {
         if (imageClassifier == null) {
             Log.w(TAG, "ImageClassifier is not initialized. Attempting to setup again.")
             setupImageClassifier()

@@ -1,4 +1,5 @@
 package com.example.myapplication.ui.login
+
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
@@ -19,7 +20,6 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.example.myapplication.data.model.UserModel
 import com.example.myapplication.databinding.ActivityLoginBinding
 import com.example.myapplication.factory.AuthViewModelFactory
@@ -46,6 +46,14 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, isError, Toast.LENGTH_SHORT).show()
         }
 
+        viewModel.loading.observe(this) { loading ->
+            if (loading == true) {
+                binding.progressLogin.visibility = View.VISIBLE
+            } else {
+                binding.progressLogin.visibility = View.GONE
+            }
+        }
+
         val textSpan = "Don't have an account? Sign Up Now!"
         val stringSpan = SpannableString(textSpan)
 
@@ -61,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
+
             override fun updateDrawState(ds: TextPaint) {
                 super.updateDrawState(ds)
                 ds.color = Color.parseColor("#001E6D")
@@ -121,14 +130,17 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Email is required.", Toast.LENGTH_SHORT).show()
                 false
             }
+
             !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
                 Toast.makeText(this, "Invalid email address.", Toast.LENGTH_SHORT).show()
                 false
             }
+
             password.isEmpty() -> {
                 Toast.makeText(this, "Password is required.", Toast.LENGTH_SHORT).show()
                 false
             }
+
             else -> true
         }
     }

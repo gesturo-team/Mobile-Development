@@ -8,7 +8,7 @@ import com.example.myapplication.data.response.LoginResponse
 import com.example.myapplication.data.response.RegisterResponse
 import com.google.gson.Gson
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.HttpException
 
 class UserRepository private constructor(
@@ -18,16 +18,16 @@ class UserRepository private constructor(
 
     suspend fun registerUser(firstName: String, lastName: String, email: String, password: String): RegisterResponse {
         return try {
-            val firstNameBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), firstName)
-            val lastNameBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), lastName)
-            val emailBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), email)
-            val passwordBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), password)
+            val firstNameReg = firstName.toRequestBody("multipart/form-data".toMediaTypeOrNull())
+            val lastNameReg = lastName.toRequestBody("multipart/form-data".toMediaTypeOrNull())
+            val emailReg = email.toRequestBody("multipart/form-data".toMediaTypeOrNull())
+            val passwordReg = password.toRequestBody("multipart/form-data".toMediaTypeOrNull())
 
-            apiService.register(firstNameBody, lastNameBody, emailBody, passwordBody)
+            apiService.register(firstNameReg, lastNameReg, emailReg, passwordReg)
         } catch (e: HttpException) {
             val errorResponse = e.response()?.errorBody()?.string()
             val parsedErrorResponse = parseErrorResponse(errorResponse)
-            Log.e("SendRegistrationData", "Error sending registration data: ${parsedErrorResponse.errors?.joinToString { it?.msg ?: "Unknown error" }}")
+            Log.e("SendRegistrationData", "${parsedErrorResponse.errors?.joinToString { it?.msg ?: "Unknown error" }}")
             parsedErrorResponse
         } catch (e: Exception) {
             Log.e("SendRegistrationData", "Unexpected error: ${e.message}")
@@ -49,11 +49,11 @@ class UserRepository private constructor(
     }
 
     suspend fun login(email: String, password: String): LoginResponse {
-        val emailRequestBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), email)
-        val passwordRequestBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), password)
+        val emailLogin = email.toRequestBody("multipart/form-data".toMediaTypeOrNull())
+        val passwordLogin = password.toRequestBody("multipart/form-data".toMediaTypeOrNull())
 
         try {
-            val response = apiService.login(emailRequestBody, passwordRequestBody)
+            val response = apiService.login(emailLogin, passwordLogin)
             if (response.success!!) {
                 response.authResult?.token?.let { token ->
                     userPreferences.saveSession(UserModel(email, token, true))
@@ -61,15 +61,10 @@ class UserRepository private constructor(
             }
             return response
         } catch (e: HttpException) {
-            // Handle the HTTP exception as needed
             throw e
         }
     }
 
-    //repo lain
-//    fun getSession(): Flow<UserModel> {
-//        return userPreferences.getSession()
-//    }
 
     companion object {
         fun getInstance(

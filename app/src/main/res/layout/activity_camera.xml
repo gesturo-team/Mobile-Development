@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
         android:minHeight="48dp"
-        android:backgroundTint="@color/blue6"
+        android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/tvResult"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -49,6 +49,7 @@
         android:contentDescription="@string/flip"
         android:src="@drawable/baseline_cameraswitch_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,13 +28,6 @@ interface ApiService {
         @Part("password") password: RequestBody
     ): RegisterResponse
 
-//    {
-//        "firstName": "John",
-//        "lastName": "Doe",
-//        "email": "john.doe@example.com",
-//        "password": "securepassword"
-//    }
-
     @Multipart
     @POST("login")
     suspend fun login(

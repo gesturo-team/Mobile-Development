@@ -1,19 +1,17 @@
 package com.example.myapplication.ui.home
 
+import android.content.Context
 import android.content.Intent
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.detection.CameraActivity
 import com.example.myapplication.databinding.FragmentHomeBinding
+import com.example.myapplication.detection.CameraActivity
 import com.example.myapplication.factory.AuthViewModelFactory
-import com.example.myapplication.factory.MainViewModelFactory
 import com.example.myapplication.ui.history.HistoryAdapter
 import com.example.myapplication.ui.main.MainViewModel
 
@@ -23,12 +21,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var historyAdapter: HistoryAdapter
-
-    companion object {
-        fun newInstance() = HomeFragment()
-    }
-
-    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,26 +44,37 @@ class HomeFragment : Fragment() {
             activity?.startActivity(cameraIntent)
         }
 
+        mainViewModel.getSession().observe(viewLifecycleOwner) { user ->
+            binding.tvName.text = user.fullName
+        }
+
         historyAdapter = HistoryAdapter()
         binding.rvHistory.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = NonScrollableLinearLayoutManager(context)
             adapter = historyAdapter
         }
 
-        mainViewModel.historyResponse.observe(viewLifecycleOwner, Observer { response ->
+        mainViewModel.historyResponse.observe(viewLifecycleOwner) { response ->
             if (response?.success == true) {
-                historyAdapter.submitList(response.data?.quiz)
+                val setData = response.data?.quiz?.take(10)
+                historyAdapter.submitList(setData)
             } else {
-                // Handle error
+                //handle error
             }
-        })
+        }
 
-        // Muat data riwayat
+        //load histories
         mainViewModel.getHistory()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+}
+
+class NonScrollableLinearLayoutManager(context: Context) : LinearLayoutManager(context) {
+    override fun canScrollVertically(): Boolean {
+        return false //disable vertical scrolling
     }
 }

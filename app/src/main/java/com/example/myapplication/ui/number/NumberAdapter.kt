@@ -8,16 +8,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.data.response.NumberListItem
-import com.example.myapplication.data.response.WordListItem
 import com.example.myapplication.databinding.GridItemBinding
-import com.example.myapplication.ui.alphabet.AlphabetAdapter
-import com.example.myapplication.ui.alphabet.DetailAlphabetActivity
 
 class NumberAdapter : ListAdapter<NumberListItem, NumberAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
-    private lateinit var onItemClickCallback: NumberAdapter.OnItemClickCallback
+    private lateinit var onItemClickCallback: OnItemClickCallback
 
-    fun setOnItemClickCallback(onItemClickCallback: NumberAdapter.OnItemClickCallback) {
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
     
@@ -45,7 +42,7 @@ class NumberAdapter : ListAdapter<NumberListItem, NumberAdapter.MyViewHolder>(DI
         if (item!=null) {
             holder.bind(item)
             holder.itemView.setOnClickListener {
-                onItemClickCallback?.onItemClicked(item)
+                onItemClickCallback.onItemClicked(item)
                 val detailIntent =
                     Intent(holder.itemView.context, DetailNumberActivity::class.java).also {
                         it.putExtra(DetailNumberActivity.EXTRA_ID, item.id)

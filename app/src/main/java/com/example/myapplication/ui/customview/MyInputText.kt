@@ -14,20 +14,20 @@ class MyInputText @JvmOverloads constructor(
         // Adding a TextWatcher to handle text changes
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // Implementation can be added here if needed
+                //none
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // Check the length of the text and set an error if it's less than 8 characters
                 if (s.toString().length < 8) {
-                    setError("Password should not be less than 8 characters", null)
+                    setError("Password: >8 chars, 1 special, 1 uppercase.", null)
                 } else {
                     error = null
                 }
             }
 
             override fun afterTextChanged(s: Editable?) {
-                // Implementation can be added here if needed
+                //none
             }
         })
     }

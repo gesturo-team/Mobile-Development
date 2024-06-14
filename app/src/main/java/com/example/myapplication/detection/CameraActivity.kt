@@ -80,7 +80,7 @@ class CameraActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-                // Handle case when nothing is selected if needed
+               //none
             }
         }
     }
@@ -104,8 +104,6 @@ class CameraActivity : AppCompatActivity() {
                                     classifications[0].categories.sortedByDescending { it?.score }
                                 val showResult = categories.joinToString("\n") {
                                     "${it.label} "
-//                                    + NumberFormat.getPercentInstance()
-//                                        .format(it.score).trim()
                                 }
                                 binding.tvResult.text = showResult
                                 Log.d(TAG, "Classification result: $showResult")
@@ -141,8 +139,6 @@ class CameraActivity : AppCompatActivity() {
                                     classifications[0].categories.sortedByDescending { it?.score }
                                 val showResult = categories.joinToString("\n") {
                                     "${it.label} "
-//                                    + NumberFormat.getPercentInstance()
-//                                        .format(it.score).trim()
                                 }
                                 binding.tvResult.text = showResult
                                 Log.d(TAG, "Classification result: $showResult")
@@ -168,39 +164,6 @@ class CameraActivity : AppCompatActivity() {
 
 
     private fun startCamera() {
-//        imageClassifierHelper = ImageClassifierHelper(
-//            context = this,
-//            classifierListener = object : ImageClassifierHelper.ClassifierListener {
-//                override fun onError(error: String) {
-//                    runOnUiThread {
-//                        Toast.makeText(this@CameraActivity, error, Toast.LENGTH_SHORT).show()
-//                    }
-//                    Log.e(TAG, "Classifier Error: $error")
-//                }
-//
-//                override fun onResult(result: List<Classifications>?) {
-//                    runOnUiThread {
-//                        result?.let { classifications ->
-//                            if (classifications.isNotEmpty() && classifications[0].categories.isNotEmpty()) {
-//                                val categories =
-//                                    classifications[0].categories.sortedByDescending { it?.score }
-//                                val showResult = categories.joinToString("\n") {
-//                                    "${it.label} "
-////                                    + NumberFormat.getPercentInstance()
-////                                        .format(it.score).trim()
-//                                }
-//                                binding.tvResult.text = showResult
-//                                Log.d(TAG, "Classification result: $showResult")
-//                            } else {
-//                                binding.tvResult.text = ""
-//                                Log.d(TAG, "No classification result.")
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        )
-
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
         cameraProviderFuture.addListener({

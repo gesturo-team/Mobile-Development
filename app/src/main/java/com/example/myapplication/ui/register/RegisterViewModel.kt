@@ -19,7 +19,11 @@ class RegisterViewModel(private val repository: UserRepository): ViewModel() {
     private val _errorReg = MutableLiveData<List<ErrorsItem?>?>()
     val errorReg: LiveData<List<ErrorsItem?>?> get() = _errorReg
 
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
+
     fun getRegister(firstName: String, lastName:String, email: String, password: String) {
+        _loading.value = true
         viewModelScope.launch {
             try {
                 val response = repository.registerUser(firstName, lastName, email, password)
@@ -35,6 +39,8 @@ class RegisterViewModel(private val repository: UserRepository): ViewModel() {
                 val unknownError = listOf(ErrorsItem(msg = "Unexpected error occurred"))
                 _errorReg.value = unknownError
                 RegisterResponse(success = false, errors = unknownError)
+            } finally {
+                _loading.value = false
             }
         }
     }

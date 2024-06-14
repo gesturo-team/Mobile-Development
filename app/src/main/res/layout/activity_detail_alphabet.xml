@@ -79,5 +79,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/ivDetailAlphabet"
         app:layout_constraintEnd_toEndOf="@+id/ivDetailAlphabet"
         app:layout_constraintStart_toStartOf="@+id/ivDetailAlphabet"
-        app:layout_constraintTop_toTopOf="@+id/ivDetailAlphabet" />
+        app:layout_constraintTop_toTopOf="@+id/ivDetailAlphabet"
+        android:indeterminate="true"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

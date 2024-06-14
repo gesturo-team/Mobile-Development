@@ -46,11 +46,11 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:src="@color/darkgrey" />
+                android:src="@drawable/gesturo" />
 
             <LinearLayout
                 android:id="@+id/tvUname"

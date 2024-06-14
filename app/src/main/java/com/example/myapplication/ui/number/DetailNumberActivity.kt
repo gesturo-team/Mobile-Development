@@ -3,13 +3,9 @@ package com.example.myapplication.ui.number
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
-import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityDetailNumberBinding
 import com.example.myapplication.detection.CameraActivity
 import com.example.myapplication.factory.MainViewModelFactory

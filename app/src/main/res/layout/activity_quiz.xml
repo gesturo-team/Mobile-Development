@@ -5,20 +5,76 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.quiz.QuizActivity">
+    tools:context=".ui.quiz.QuizActivity"
+    android:background="@color/bg_grey">
 
-    <Button
-        android:id="@+id/btnAlphabet"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/navQuiz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/red"/>
+        app:navigationIcon="@drawable/nav_back"
+        app:title="Quiz"
+        app:titleTextColor="@color/blue5" />
 
-    <Button
-        android:id="@+id/btnNumber"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/btnAlphabet" />
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navQuiz"
+        android:layout_margin="20dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_semibold"
+            android:textSize="18sp"
+            android:text="Choose Your Quiz"
+            android:textColor="@color/blue6"
+            android:textAlignment="center"
+            android:layout_marginBottom="32dp"/>
+
+        <RelativeLayout
+            android:id="@+id/btnAlphabet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/alp_quiz_choose"
+            android:gravity="center"
+            android:layout_marginBottom="12dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alphabet Quiz"
+                android:fontFamily="@font/inter_semibold"
+                android:textSize="16sp"
+                android:textColor="@color/white"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btnNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/num_quiz_choose"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number Quiz"
+                android:fontFamily="@font/inter_semibold"
+                android:textSize="16sp"
+                android:textColor="@color/white"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

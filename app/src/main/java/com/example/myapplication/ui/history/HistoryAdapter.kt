@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.history
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,38 +8,42 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.data.response.QuizItem
 import com.example.myapplication.databinding.ListHistoryBinding
+import java.text.SimpleDateFormat
+import java.util.Locale
 
-class HistoryAdapter : ListAdapter<QuizItem, HistoryAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class HistoryAdapter : ListAdapter<QuizItem, HistoryAdapter.HistoryViewHolder>(DIFF_CALLBACK) {
 
-    private lateinit var onItemClickCallback: HistoryAdapter.OnItemClickCallback
 
-    fun setOnItemClickCallback(onItemClickCallback: HistoryAdapter.OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
-
-    inner class MyViewHolder(private val binding: ListHistoryBinding) :
+    inner class HistoryViewHolder(private val binding: ListHistoryBinding) :
     RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(item: QuizItem) {
-            binding.tvHistory.text = item.type
-            binding.tvDate.text = item.createdAt
-            binding.tvScore.text = item.score
+            binding.tvHistory.text = item.type?.capitalizeWords() + " Quiz"
+            binding.tvDate.text = item.createdAt?.let { convertDate(it) }
+            binding.tvScore.text = "${item.score}/10"
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
         val binding = ListHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyViewHolder(binding)
+        return HistoryViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
     }
 
-    interface OnItemClickCallback {
-        fun onItemClicked(data: QuizItem) {
-        }
+    private fun convertDate(date: String): String {
+        val inputDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+        val outputDate = SimpleDateFormat("dd/M/yyyy", Locale.getDefault())
+        val convertDate = inputDate.parse(date)
+        return  outputDate.format(convertDate!!)
+
     }
+
+    fun String.capitalizeWords(): String = split(" ").joinToString(" ") { it.capitalize(Locale.ROOT) }
+
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<QuizItem>() {
