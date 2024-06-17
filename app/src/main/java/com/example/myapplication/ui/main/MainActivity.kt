@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home -> {
                     loadFragment(HomeFragment())
                     true
+
                 }
                 R.id.nav_edu -> {
                     loadFragment(LearnFragment())
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+//        finish()
 
         navView.selectedItemId = R.id.nav_home
 

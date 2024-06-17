@@ -10,35 +10,32 @@
     <androidx.camera.view.PreviewView
         android:id="@+id/viewCamera"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvResult"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.03">
+
     </androidx.camera.view.PreviewView>
 
     <TextView
         android:id="@+id/tvResult"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="160dp"
         android:background="@color/white"
+        android:fontFamily="@font/inter_bold"
         android:lines="3"
         android:maxLines="3"
         android:padding="16dp"
-        android:textSize="20sp"
-        android:textColor="@color/blue6"
-        android:fontFamily="@font/inter_bold"
         android:textAlignment="center"
+        android:textColor="@color/blue6"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewCamera"
         tools:text="@string/result" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="18dp"
-        android:minHeight="48dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/tvResult"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/btnSwitch"
@@ -51,5 +48,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/blue6"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvResult"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewCamera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

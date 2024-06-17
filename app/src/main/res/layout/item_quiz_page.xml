@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="16dp"
-        android:text="What letter is it?"
+        android:text="@string/ask"
         android:fontFamily="@font/inter_semibold"
         android:textColor="@color/blue6" />
 
@@ -29,44 +29,6 @@
         android:layout_margin="18dp"
         app:layout_constraintTop_toBottomOf="@+id/questionTextView"
         android:src="@color/blue6"/>
-
-<!--    <LinearLayout-->
-<!--        android:id="@+id/btnAnswer"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        android:layout_margin="18dp"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/ivQuiz">-->
-
-<!--        <Button-->
-<!--            android:id="@+id/answer1Button"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="A"-->
-<!--            android:backgroundTint="@color/white"-->
-<!--            />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/answer2Button"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="B" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/answer3Button"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="C" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/answer4Button"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="D" />-->
-<!--    </LinearLayout>-->
-
     <RadioGroup
         android:id="@+id/btnAnswer"
         android:layout_width="200dp"
@@ -83,35 +45,49 @@
             android:id="@+id/btnAnswer1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Answer 1" />
+            android:text="Answer 1"
+            android:fontFamily="@font/inter_semibold"
+            android:textColor="@color/blue6"
+            android:textSize="20sp" />
 
         <RadioButton
             android:id="@+id/btnAnswer2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Answer 2" />
+            android:text="Answer 2"
+            android:fontFamily="@font/inter_semibold"
+            android:textColor="@color/blue6"
+            android:textSize="20sp"/>
 
         <RadioButton
             android:id="@+id/btnAnswer3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Answer 3" />
+            android:text="Answer 3"
+            android:fontFamily="@font/inter_semibold"
+            android:textColor="@color/blue6"
+            android:textSize="20sp"/>
 
         <RadioButton
             android:id="@+id/btnAnswer4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Answer 4" />
+            android:text="Answer 4"
+            android:fontFamily="@font/inter_semibold"
+            android:textColor="@color/blue6"
+            android:textSize="20sp"/>
 
     </RadioGroup>
 
-<!--    <com.airbnb.lottie.LottieAnimationView-->
-<!--        android:id="@+id/lottieAnimationView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_centerInParent="true"-->
-<!--        app:lottie_rawRes="@raw/sw"-->
-<!--        app:lottie_autoPlay="true"-->
-<!--        app:lottie_loop="true" />-->
+    <ImageView
+        android:id="@+id/quizNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/next_quiz"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintStart_toEndOf="@+id/ivQuiz"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

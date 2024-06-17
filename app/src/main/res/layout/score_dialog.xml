@@ -16,7 +16,7 @@
         android:id="@+id/tvScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Score : 1"
+        android:text="@string/score"
         android:textSize="18sp"
         android:fontFamily="@font/inter_bold"
         android:textColor="@color/blue6"

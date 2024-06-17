@@ -17,15 +17,15 @@ class DetailAlphabetViewModel(private val repository: MainRepository) : ViewMode
 
     fun getAlphabetDetail(value: String) {
         _isLoading.value = true
-        try {
-            viewModelScope.launch {
-                val detailAlphabet = repository.getAlphabetDetail(value)
-                _detail.value = detailAlphabet
+        viewModelScope.launch {
+            try {
+                    val detailAlphabet = repository.getAlphabetDetail(value)
+                    _detail.value = detailAlphabet
+            } catch (e: Exception) {
+                _detail.value = DetailAlphabetResponse(null, false, e.message)
+            } finally {
+                _isLoading.value = false
             }
-        } catch (e: Exception) {
-            _detail.value = DetailAlphabetResponse(null, false, e.message)
-        } finally {
-            _isLoading.value = false
         }
     }
 }

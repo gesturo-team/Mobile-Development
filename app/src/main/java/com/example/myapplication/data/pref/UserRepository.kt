@@ -25,25 +25,11 @@ class UserRepository private constructor(
 
             apiService.register(firstNameReg, lastNameReg, emailReg, passwordReg)
         } catch (e: HttpException) {
-            val errorResponse = e.response()?.errorBody()?.string()
-            val parsedErrorResponse = parseErrorResponse(errorResponse)
-            Log.e("SendRegistrationData", "${parsedErrorResponse.errors?.joinToString { it?.msg ?: "Unknown error" }}")
-            parsedErrorResponse
+            throw e
         } catch (e: Exception) {
-            Log.e("SendRegistrationData", "Unexpected error: ${e.message}")
-            val unknownError = listOf(ErrorsItem(msg = "Unexpected error occurred"))
-            RegisterResponse(success = false, errors = unknownError)
+            throw e
         }
     }
-
-    private fun parseErrorResponse(errorBody: String?): RegisterResponse {
-        return try {
-            Gson().fromJson(errorBody, RegisterResponse::class.java)
-        } catch (e: Exception) {
-            RegisterResponse(success = false, errors = listOf(ErrorsItem(msg = "Unknown error occurred")))
-        }
-    }
-
     suspend fun saveSession(userModel: UserModel) {
         userPreferences.saveSession(userModel)
     }

@@ -9,6 +9,7 @@
     <color name="bg_btn_main">#FF6600</color>
     <color name="red">#FF0100</color>
     <color name="blue4">#2278DD</color>
+    <color name="blue2">#92B0FF</color>
     <color name="colorSelectedItem">#FF4081</color>
     <color name="colorUnselectedItem">#000000</color>
     <color name="grey4">#959595</color>

@@ -3,6 +3,7 @@ package com.example.myapplication.ui.quiz
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -35,7 +36,7 @@ class QuizDetailActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.navQuiz)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        binding.navQuiz.setNavigationOnClickListener{
+        binding.navQuiz.setNavigationOnClickListener {
             onBackPressed()
         }
 
@@ -49,11 +50,16 @@ class QuizDetailActivity : AppCompatActivity() {
             }
         }
 
-        quizViewModel.isLoading.observe(this) { _ ->
+        quizViewModel.isLoading.observe(this) { isLoading ->
+            if (isLoading) {
+                binding.progressQuiz.visibility = View.VISIBLE
+            } else {
+                binding.progressQuiz.visibility = View.GONE
+            }
         }
 
         val type = intent.getStringExtra("TYPE")
-        if(type == "number") {
+        if (type == "number") {
             quizViewModel.getQuizNumber()
         } else if (type == "alphabet") {
             quizViewModel.getQuizAlphabet()

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp"
+        android:padding="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/inter_semibold"
-            android:text="QUIZ"
+            android:text="@string/board_3_title"
             android:textColor="@color/blue6"
             android:textSize="24sp" />
 
@@ -39,9 +39,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/inter"
-            android:text="Test Your ASL Knowledge! Take the multiple-choice quiz to challenge and expand your skill."
+            android:text="@string/board_3_desc"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <Button
@@ -52,7 +52,7 @@
         android:backgroundTint="@color/bg_btn_main"
         android:drawableEnd="@drawable/next"
         android:fontFamily="@font/inter"
-        android:text="Finish"
+        android:text="@string/finish"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"

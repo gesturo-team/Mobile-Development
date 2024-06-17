@@ -42,7 +42,11 @@ class HistoryAdapter : ListAdapter<QuizItem, HistoryAdapter.HistoryViewHolder>(D
 
     }
 
-    fun String.capitalizeWords(): String = split(" ").joinToString(" ") { it.capitalize(Locale.ROOT) }
+    fun String.capitalizeWords(): String = split(" ").joinToString(" ") { it.replaceFirstChar {
+        if (it.isLowerCase()) it.titlecase(
+            Locale.ROOT
+        ) else it.toString()
+    } }
 
 
     companion object {

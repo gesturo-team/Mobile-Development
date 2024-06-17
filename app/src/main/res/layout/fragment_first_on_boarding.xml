@@ -30,7 +30,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/inter_semibold"
-            android:text="REAL TIME TRANSLATOR"
+            android:text="@string/board_1_title"
             android:textColor="@color/blue6"
             android:textSize="24sp" />
 
@@ -39,9 +39,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/inter"
-            android:text="Bridging Communication with Real-Time Sign Recognition and Practice Your Sign Language Skills"
+            android:text="@string/board_1_desc"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <Button
@@ -52,7 +52,7 @@
         android:backgroundTint="@color/bg_btn_main"
         android:drawableEnd="@drawable/next"
         android:fontFamily="@font/inter"
-        android:text="Next"
+        android:text="@string/next"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"

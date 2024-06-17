@@ -8,12 +8,6 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,7 +72,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="text"
-                    android:background="@drawable/bg_input" />
+                    android:background="@drawable/bg_input"
+                    android:contentDescription="@string/first_name"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Last Name -->
@@ -219,5 +214,4 @@
                 android:progressTint="@color/bg_btn_main"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
 </ScrollView>

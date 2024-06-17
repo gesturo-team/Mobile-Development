@@ -40,7 +40,6 @@ class OnBoardingFragment : Fragment() {
         val boardAdapter = OnBoardingAdapter(onBoard, requireActivity().supportFragmentManager, lifecycle)
         binding.vpOnBoarding.adapter = boardAdapter
 
-        // Return the root view of the binding
         return binding.root
     }
 

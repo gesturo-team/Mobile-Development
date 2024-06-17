@@ -20,9 +20,14 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.example.myapplication.databinding.ActivityCameraBinding
 import com.example.myapplication.detection.helper.ImageClassifierHelper
-import org.tensorflow.lite.task.vision.classifier.Classifications
-import java.text.NumberFormat
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.tensorflow.lite.task.gms.vision.classifier.Classifications
 import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 class CameraActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCameraBinding
@@ -80,10 +85,11 @@ class CameraActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-               //none
+                //none
             }
         }
     }
+
 
     private fun translateNumber() {
         imageClassifierHelper = ImageClassifierHelper(
@@ -165,7 +171,10 @@ class CameraActivity : AppCompatActivity() {
 
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
-
+//        if(!isModelReady) {
+//            Toast.makeText(this, "Wait For A While!", Toast.LENGTH_SHORT).show()
+//            return
+//        }
         cameraProviderFuture.addListener({
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
             val resolutionSelector = ResolutionSelector.Builder()
@@ -177,6 +186,8 @@ class CameraActivity : AppCompatActivity() {
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888)
                 .build()
+
+
             imageAnalyzer.setAnalyzer(Executors.newSingleThreadExecutor()) { image ->
                 when (binding.spinner.selectedItem.toString()) {
                     "Alphabet" -> imageClassifierHelper.classifyAlphabet(image)

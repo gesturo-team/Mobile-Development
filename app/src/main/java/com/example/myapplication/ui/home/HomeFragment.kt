@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.databinding.FragmentHomeBinding
 import com.example.myapplication.detection.CameraActivity
 import com.example.myapplication.factory.AuthViewModelFactory
+import com.example.myapplication.factory.MainViewModelFactory
 import com.example.myapplication.ui.history.HistoryAdapter
 import com.example.myapplication.ui.main.MainViewModel
 
@@ -25,9 +26,8 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mainViewModel = ViewModelProvider(requireActivity(), AuthViewModelFactory.getInstance(requireActivity()))[MainViewModel::class.java]
+        mainViewModel = ViewModelProvider(requireActivity(), MainViewModelFactory.getInstance(requireActivity()))[MainViewModel::class.java]
 
-        // TODO: Use the ViewModel
     }
 
     override fun onCreateView(

@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.example.myapplication.R
 import com.example.myapplication.data.response.QuizQuestionsItem
 import com.example.myapplication.databinding.ItemQuizPageBinding
 
@@ -36,6 +38,7 @@ class QuizDetailAdapter(var questionsItem: List<QuizQuestionsItem>) : RecyclerVi
                     }
                 }
             }
+
         }
     }
 

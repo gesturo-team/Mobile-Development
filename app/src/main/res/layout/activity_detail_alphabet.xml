@@ -70,16 +70,14 @@
 
     <ProgressBar
         android:id="@+id/progressDetailAlphabet"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="100dp"
-        android:progressTint="@color/blue6"
-        android:progress="75"
-        android:progressBackgroundTint="@color/blue6"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/ivDetailAlphabet"
-        app:layout_constraintEnd_toEndOf="@+id/ivDetailAlphabet"
-        app:layout_constraintStart_toStartOf="@+id/ivDetailAlphabet"
-        app:layout_constraintTop_toTopOf="@+id/ivDetailAlphabet"
-        android:indeterminate="true"
-        android:visibility="gone"/>
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="5dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +8,12 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentProfileBinding
 import com.example.myapplication.ui.main.MainViewModel
 import com.example.myapplication.factory.AuthViewModelFactory
+import okhttp3.internal.http2.Settings
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -42,6 +46,12 @@ class ProfileFragment : Fragment() {
 //            mainViewModel.logout()
 //            requireActivity().finish()
             showSuccessDialog()
+        }
+        binding.tvinfo.setOnClickListener{
+            activity?.startActivity(Intent(activity, AboutActivity::class.java))
+        }
+        binding.tvLanguage.setOnClickListener {
+            activity?.startActivity(Intent(android.provider.Settings.ACTION_LOCALE_SETTINGS))
         }
     }
 

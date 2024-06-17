@@ -1,27 +1,62 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name" translatable="false">Gesturo</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="home">Home</string>
-    <string name="learn">Learning</string>
-    <string name="profile">Profile</string>
-    <string name="welcome">Welcome to Gesturo</string>
-    <string name="signup">Sign up below to get started!</string>
-    <string name="welcomelogin">Welcome Back</string>
-    <string name="login">Fill your login details!</string>
-    <string name="email">E-Mail</string>
-    <string name="password">Password</string>
-    <string name="name">Name</string>
-    <string name="hi">Hi, </string>
-    <string name="flip">Flip Camera</string>
-    <string name="result">Result</string>
-    <string name="try_it">TRY IT NOW</string>
-    <string name="number">Number</string>
-    <string name="choose">Choose</string>
-    <string name="btn_signup">SIGN UP</string>
-    <string name="btn_login">LOG IN</string>
-    <string name="first_name">First Name</string>
-    <string name="last_name">Last Name</string>
-    <string name="img_class_failed">Image Classifier Failed. Check log for more!!</string>
-    <string name="progress_text">%d/%d</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="home" translatable="false">Home</string>
+    <string name="learn" translatable="false">Learning</string>
+    <string name="profile" translatable="false">Profile</string>
+    <string name="welcome" translatable="false">Welcome to Gesturo</string>
+    <string name="signup" translatable="false">Sign up below to get started!</string>
+    <string name="welcomelogin" translatable="false">Welcome Back</string>
+    <string name="login" translatable="false">Fill your login details!</string>
+    <string name="email" translatable="false">E-Mail</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="name" translatable="false">Name</string>
+    <string name="hi" translatable="false">Hi, </string>
+    <string name="flip" translatable="false">Flip Camera</string>
+    <string name="result" translatable="false">Result</string>
+    <string name="try_it" translatable="false">TRY IT NOW</string>
+    <string name="number" translatable="false">Number</string>
+    <string name="choose" translatable="false">Choose</string>
+    <string name="btn_signup" translatable="false">SIGN UP</string>
+    <string name="btn_login" translatable="false">LOG IN</string>
+    <string name="first_name" translatable="false">First Name</string>
+    <string name="last_name" translatable="false">Last Name</string>
+    <string name="img_class_failed" translatable="false">Image Classifier Failed. Check log for more!!</string>
+    <string name="progress_text" translatable="false">%d/%d</string>
+    <string name="tflitevision_is_not_initialized_yet" translatable="false">TfLiteVision is not initialized yet</string>
+    <string name="about_us_1" translatable="false">In Indonesia, there is a sizeable deaf population of around 2 million people. Deaf individuals face challenges in communicating and obtaining information because sign language is not a common language spoken in the community. Therefore, it is difficult for them to communicate with people who are not fluent in sign language. And vice versa. Many members of the general public do not understand sign language, making it difficult to communicate and interact with them. The lack of accessibility and resources to learn sign language for people who are interested, the lack of sign language teaching personnel, and the lack of sign language learning applications that utilize the latest technology are our reasons for creating and developing this application. The creation of sign language learning and translation apps is crucial to improving the quality of life for the deaf community and promoting social inclusion. This app has the potential to bring positive change to the lives of millions of people. By developing this app, we are optimistic that we can help create a more just and inclusive society for everyone, including the deaf.</string>
+    <string name="about_us_2" translatable="false">Real-time translator, dictionary, and quiz</string>
+    <string name="alphabet" translatable="false">Alphabet</string>
+    <string name="choose_quiz" translatable="false">Choose Your Quiz</string>
+    <string name="alphabet_quiz" translatable="false">Alphabet Quiz</string>
+    <string name="number_quiz" translatable="false">Number Quiz</string>
+    <string name="submit" translatable="false">SUBMIT</string>
+    <string name="desc" translatable="false">Description :</string>
+    <string name="feat" translatable="false">Features :</string>
+    <string name="board_1_title" translatable="false">REAL TIME TRANSLATOR</string>
+    <string name="board_1_desc" translatable="false">Bridging Communication with Real-Time Sign Recognition and Practice Your Sign Language Skills</string>
+    <string name="board_2_title" translatable="false">DICTIONARY</string>
+    <string name="board_2_desc" translatable="false">Discover the ASL Alphabet and Numbers Dictionary! Easily look up and learn American Sign Language letters and numbers with real-time practice exercises.</string>
+    <string name="board_3_title" translatable="false">Quiz</string>
+    <string name="board_3_desc" translatable="false">Test Your ASL Knowledge! Take the multiple-choice quiz to challenge and expand your skill.</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="finish" translatable="false">Finish</string>
+    <string name="intro" translatable="false">What Will You\nLearn Today?</string>
+    <string name="translate_home" translatable="false">Sign Language Translator</string>
+    <string name="dictionary" translatable="false">Dictionary</string>
+    <string name="dictionary_desc" translatable="false">Learn alphabet and numbers in ASL</string>
+    <string name="quiz" translatable="false">Quiz</string>
+    <string name="quiz_desc" translatable="false">Check your knowledge</string>
+    <string name="history" translatable="false">HISTORY</string>
+    <string name="score" translatable="false">Score :</string>
+    <string name="language" translatable="false">Language</string>
+    <string name="about" translatable="false">About Us</string>
+    <string name="logout" translatable="false">LOGOUT</string>
+    <string name="desc_alph" translatable="false">26 Letters</string>
+    <string name="slogan_alph" translatable="false">Every Letter, Every Sign!</string>
+    <string name="slogan_num" translatable="false">Learn, sign, and count!</string>
+    <string name="desc_quiz" translatable="false">Multiple Choice</string>
+    <string name="slogan_quiz" translatable="false">Get ready to quiz and conquer!</string>
+    <string name="ask" translatable="false">What letter is it?</string>
 </resources>

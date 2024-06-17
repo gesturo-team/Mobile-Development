@@ -24,7 +24,7 @@
             android:paddingStart="20dp"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-            app:title="Profile"
+            app:title="@string/profile"
             app:titleTextColor="@color/blue6" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -107,7 +107,35 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/tvInfo"
+                android:id="@+id/tvLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/bg_input"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/language" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="@string/language"
+                    android:textColor="@color/blue4"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tvinfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -129,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:fontFamily="@font/inter_medium"
-                    android:text="About Us"
+                    android:text="@string/about"
                     android:textColor="@color/blue4"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -150,7 +178,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_bold"
-                    android:text="LOGOUT"
+                    android:text="@string/logout"
                     android:textAlignment="center"
                     android:textColor="@color/red"
                     android:textSize="14sp" />

@@ -17,15 +17,15 @@ class DetailNumberViewModel(private val repository: MainRepository) : ViewModel(
 
     fun getNumberDetail(value: String) {
         _isLoading.value = true
-        try {
-            viewModelScope.launch {
+        viewModelScope.launch {
+            try {
                 val detailNumber = repository.getNumberDetail(value)
                 _detail.value = detailNumber
+            } catch (e: Exception) {
+                _detail.value = DetailNumberResponse(null, false, e.message)
+            } finally {
+                _isLoading.value = false
             }
-        } catch (e: Exception) {
-            _detail.value = DetailNumberResponse(null, false, e.message)
-        } finally {
-            _isLoading.value = false
         }
     }
 }

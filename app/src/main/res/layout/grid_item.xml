@@ -18,7 +18,8 @@
                 android:id="@+id/ivImg"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:src="@color/grey4"/>
+                android:src="@color/grey4"
+                android:transitionName="image"/>
             <TextView
                 android:id="@+id/tvText"
                 android:layout_width="match_parent"
@@ -28,6 +29,7 @@
                 android:textSize="18sp"
                 android:fontFamily="@font/inter_medium"
                 android:layout_marginBottom="8dp"
-                android:textColor="@color/blue6"/>
+                android:textColor="@color/blue6"
+                android:transitionName="text"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

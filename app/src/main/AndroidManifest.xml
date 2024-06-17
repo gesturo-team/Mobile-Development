@@ -21,11 +21,13 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".ui.quiz.QuizDetailActivity"
+            android:name=".ui.profile.AboutActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".ui.splash.SplashActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".ui.quiz.QuizDetailActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".ui.splash.SplashActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".ui.number.DetailNumberActivity"
             android:exported="false" />
@@ -61,8 +63,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
+        </activity> <!-- <activity -->
+        <!-- android:name=".ui.splash.SplashActivity" -->
+        <!-- android:exported="false" /> -->
+        <!-- <activity -->
+        <!-- android:name=".ui.main.MainActivity" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.splash
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
 import com.example.myapplication.data.pref.isOnboardingCompleted
+import com.example.myapplication.ui.main.MainActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,16 +39,16 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         Handler().postDelayed({
             if (isOnboardingCompleted(requireContext())) {
                 findNavController().navigate(R.id.action_splashFragment_to_mainActivity)
+                startActivity(Intent(requireContext(), MainActivity::class.java))
+                requireActivity().finish()
             } else {
                 findNavController().navigate(R.id.action_splashFragment_to_onBoardingFragment)
             }
-        }, 3000)
+        }, 2000)
 
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 

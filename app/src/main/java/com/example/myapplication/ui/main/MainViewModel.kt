@@ -127,21 +127,21 @@ class MainViewModel(
     }
 
 fun submitAnswers(answer: QuizData) {
+    _isLoading.value = true
     viewModelScope.launch {
         try {
             val response = repository.submitAnswer(answer)
             if (response.success == true) {
                 _submit.postValue(response)
             } else {
-                // Handle error case
                 Log.e("MainViewModel", "Failed to submit answers: ${response.message}")
             }
         } catch (e: HttpException) {
-            // Handle HTTP exceptions
-            Log.e("MainViewModel", "HTTP error occurred: ${e.code()} ${e.message()}", e)
+            throw e
         } catch (e: Exception) {
-            // Handle other exceptions
-            Log.e("MainViewModel", "Exception occurred while submitting answers", e)
+            throw e
+        } finally {
+            _isLoading.value = false
         }
     }
 }

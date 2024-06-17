@@ -43,7 +43,7 @@
                 android:fontFamily="@font/inter_bold"
                 android:text="1/10"
                 android:textColor="@color/blue6"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:layout_gravity="center_horizontal" />
 
             <androidx.viewpager2.widget.ViewPager2
@@ -52,20 +52,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="480dp" />
 
+
             <Button
                 android:id="@+id/nextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="54dp"
                 android:layout_marginTop="16dp"
-                android:text="SUBMIT"
+                android:text="@string/submit"
                 android:backgroundTint="@color/bg_btn_main"
                 android:textColor="@color/white"
                 android:fontFamily="@font/inter_bold"
                 android:textSize="14sp"
                 android:layout_gravity="center_horizontal" />
-
         </LinearLayout>
 
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressQuiz"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        android:progressTint="@color/bg_btn_main"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
