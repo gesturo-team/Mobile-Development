@@ -20,6 +20,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myapplication.R
@@ -59,7 +60,12 @@ class RegisterActivity : AppCompatActivity() {
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
                 val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-                startActivity(intent)
+                val animation = ActivityOptionsCompat.makeCustomAnimation(
+                    this@RegisterActivity,
+                    android.R.anim.fade_in,
+                    android.R.anim.fade_out
+                )
+                startActivity(intent, animation.toBundle())
                 finish()
             }
             override fun updateDrawState(ds: TextPaint) {

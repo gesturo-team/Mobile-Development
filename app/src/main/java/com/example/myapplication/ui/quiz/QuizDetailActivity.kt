@@ -102,7 +102,12 @@ class QuizDetailActivity : AppCompatActivity() {
     }
 
     private fun userScore(answers: List<QuizQuestionsItem>): Int {
-        return answers.count { it.userAnswer == it.answers?.find { correct -> correct?.correct == true }?.value }
+        return answers.count { it.userAnswer == it.answers?.find { correct -> correct?.correct == true }?.value?.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase(
+                Locale.ROOT
+            ) else it.toString()
+        }
+        }
     }
 
     private fun submitAlphabet() {

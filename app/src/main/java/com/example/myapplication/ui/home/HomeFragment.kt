@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
         binding.rvHistory.apply {
             layoutManager = NonScrollableLinearLayoutManager(context)
             adapter = historyAdapter
-            if (this.adapter?.itemCount == 0) {
+            if (this.adapter?.itemCount == null) {
                 binding.rvHistory.visibility = View.GONE
                 binding.imgHistory.visibility = View.VISIBLE
             } else {
