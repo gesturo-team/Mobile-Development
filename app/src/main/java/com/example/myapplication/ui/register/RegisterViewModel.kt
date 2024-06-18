@@ -33,12 +33,11 @@ class RegisterViewModel(private val repository: UserRepository): ViewModel() {
                 val errorBody = Gson().fromJson(jsonInString, RegisterResponse::class.java)
                 val errorMessage = errorBody.errors
                 _errorReg.value = errorMessage
-                Log.e("SendRegistrationData", "Error sending registration data: ${errorMessage?.joinToString { it?.msg ?: "Unknown error" }}")
+                Log.e("Register", "Failed sending the data: ${errorMessage?.joinToString { it?.msg ?: "Error" }}")
             } catch (e: Exception) {
-                Log.e("SendRegistrationData", "Unexpected error: ${e.message}")
-                val unknownError = listOf(ErrorsItem(msg = "Unexpected error occurred"))
-                _errorReg.value = unknownError
-                RegisterResponse(success = false, errors = unknownError)
+                Log.e("Register", "Error: ${e.message}")
+                _errorReg.value = listOf(ErrorsItem(msg = "Error"))
+                RegisterResponse(success = false, errors = listOf(ErrorsItem(msg = "Error")))
             } finally {
                 _loading.value = false
             }

@@ -11,14 +11,12 @@ class MyInputText @JvmOverloads constructor(
 ) : AppCompatEditText(context, attrs) {
 
     init {
-        // Adding a TextWatcher to handle text changes
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 //none
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // Check the length of the text and set an error if it's less than 8 characters
                 if (s.toString().length < 8) {
                     setError("Password: >8 chars, 1 special, 1 uppercase.", null)
                 } else {

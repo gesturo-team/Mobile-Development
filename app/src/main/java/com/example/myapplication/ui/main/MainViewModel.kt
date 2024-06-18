@@ -134,7 +134,7 @@ fun submitAnswers(answer: QuizData) {
             if (response.success == true) {
                 _submit.postValue(response)
             } else {
-                Log.e("MainViewModel", "Failed to submit answers: ${response.message}")
+                Log.e("MainViewModel", "Submission Failed: ${response.message}")
             }
         } catch (e: HttpException) {
             throw e

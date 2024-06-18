@@ -75,9 +75,9 @@ class QuizDetailActivity : AppCompatActivity() {
 
         quizViewModel.submit.observe(this) { response ->
             if (response != null && response.success == true) {
-                Toast.makeText(this, "Answers submitted successfully!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Congrats, you finished it", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Failed to submit answers!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "It's failed!", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -94,14 +94,14 @@ class QuizDetailActivity : AppCompatActivity() {
             }
         })
 
-        answers = collectAnswersFromAdapter()
+        answers = userAnswers()
     }
 
-    private fun collectAnswersFromAdapter(): List<QuizQuestionsItem> {
+    private fun userAnswers(): List<QuizQuestionsItem> {
         return (binding.viewPager.adapter as QuizDetailAdapter).questionsItem
     }
 
-    private fun calculateScore(answers: List<QuizQuestionsItem>): Int {
+    private fun userScore(answers: List<QuizQuestionsItem>): Int {
         return answers.count { it.userAnswer == it.answers?.find { correct -> correct?.correct == true }?.value }
     }
 
@@ -109,14 +109,14 @@ class QuizDetailActivity : AppCompatActivity() {
 //        val answers = collectAnswersFromAdapter()
         val dateFormat = SimpleDateFormat("dd/M/yyyy hh:mm:ss", Locale.getDefault())
         val currentDate = dateFormat.format(Date())
-        val request = QuizData(
-            score = calculateScore(answers).toString(),
+        val sendData = QuizData(
+            score = userScore(answers).toString(),
             type = "alphabet",
             createdAt = currentDate,
             updatedAt = currentDate,
             questions = answers
         )
-        quizViewModel.submitAnswers(request)
+        quizViewModel.submitAnswers(sendData)
 
         scoreDialog()
     }
@@ -124,14 +124,14 @@ class QuizDetailActivity : AppCompatActivity() {
     private fun submitNumber() {
         val dateFormat = SimpleDateFormat("dd/M/yyyy hh:mm:ss", Locale.getDefault())
         val currentDate = dateFormat.format(Date())
-        val request = QuizData(
-            score = calculateScore(answers).toString(),
+        val sendData = QuizData(
+            score = userScore(answers).toString(),
             type = "number",
             createdAt = currentDate,
             updatedAt = currentDate,
             questions = answers
         )
-        quizViewModel.submitAnswers(request)
+        quizViewModel.submitAnswers(sendData)
         scoreDialog()
     }
 
@@ -141,7 +141,7 @@ class QuizDetailActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
             .setView(scoreBinding.root)
         val dialog = builder.create()
-        scoreBinding.tvScore.text = "SCORE : ${calculateScore(answers)}"
+        scoreBinding.tvScore.text = "SCORE : ${userScore(answers)}"
         scoreBinding.btnOk.setOnClickListener {
             dialog.dismiss()
             finish()

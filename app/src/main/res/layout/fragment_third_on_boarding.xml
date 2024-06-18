@@ -22,17 +22,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/onboarding_quiz" />
+            android:src="@drawable/board_3" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="8dp"
-            android:fontFamily="@font/inter_semibold"
+            android:fontFamily="@font/inter_bold"
             android:text="@string/board_3_title"
             android:textColor="@color/blue6"
-            android:textSize="24sp" />
+            android:textSize="32sp" />
 
         <TextView
             android:layout_width="wrap_content"

@@ -14,6 +14,8 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        buildConfigField("String", "BASE_URL", "\"https://gesturo-application.et.r.appspot.com/\"")
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -21,6 +23,7 @@ android {
         viewBinding = true
         dataBinding = true
         mlModelBinding = true
+        buildConfig = true
     }
 
     buildTypes {
