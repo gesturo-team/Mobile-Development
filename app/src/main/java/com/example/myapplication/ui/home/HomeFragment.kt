@@ -52,6 +52,13 @@ class HomeFragment : Fragment() {
         binding.rvHistory.apply {
             layoutManager = NonScrollableLinearLayoutManager(context)
             adapter = historyAdapter
+            if (this.adapter?.itemCount == 0) {
+                binding.rvHistory.visibility = View.GONE
+                binding.imgHistory.visibility = View.VISIBLE
+            } else {
+                binding.rvHistory.visibility = View.VISIBLE
+                binding.imgHistory.visibility = View.GONE
+            }
         }
 
         mainViewModel.historyResponse.observe(viewLifecycleOwner) { response ->
@@ -60,6 +67,14 @@ class HomeFragment : Fragment() {
                 historyAdapter.submitList(setData)
             } else {
                 //handle error
+            }
+        }
+
+        mainViewModel.isLoading.observe(viewLifecycleOwner) {isLoading ->
+            if (isLoading) {
+                binding.progressHistory.visibility = View.VISIBLE
+            } else {
+                binding.progressHistory.visibility = View.GONE
             }
         }
 

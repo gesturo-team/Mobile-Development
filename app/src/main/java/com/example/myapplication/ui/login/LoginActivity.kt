@@ -20,6 +20,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import com.example.myapplication.data.model.UserModel
 import com.example.myapplication.databinding.ActivityLoginBinding
 import com.example.myapplication.factory.AuthViewModelFactory
@@ -66,7 +67,12 @@ class LoginActivity : AppCompatActivity() {
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
                 val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
-                startActivity(intent)
+                val animation = ActivityOptionsCompat.makeCustomAnimation(
+                    this@LoginActivity,
+                    android.R.anim.fade_in,
+                    android.R.anim.fade_out
+                )
+                startActivity(intent, animation.toBundle())
                 finish()
             }
 

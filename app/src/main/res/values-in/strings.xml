@@ -59,4 +59,5 @@
     <string name="desc_quiz">Pilihan Ganda</string>
     <string name="slogan_quiz">Bersiaplah Untuk Kuismu!</string>
     <string name="ask">Ini apa hayoo...</string>
+    <string name="empty">Riwayat Kuis Kosong</string>
 </resources>

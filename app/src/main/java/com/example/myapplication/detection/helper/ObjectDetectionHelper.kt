@@ -21,7 +21,7 @@ import org.tensorflow.lite.task.gms.vision.classifier.Classifications
 import org.tensorflow.lite.task.gms.vision.classifier.ImageClassifier
 
 class ImageClassifierHelper(
-    private var threshold: Float = 0.4f,
+    private var threshold: Float = 0.1f,
     private var maxResult: Int = 1,
     private var modelName: String = "alphabet_v1_metadata.tflite",
     val context: Context,

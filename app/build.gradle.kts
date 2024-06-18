@@ -95,5 +95,8 @@ dependencies {
     //lottie
     implementation("com.airbnb.android:lottie:3.7.2")
 
+    // image circle
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
     
 }

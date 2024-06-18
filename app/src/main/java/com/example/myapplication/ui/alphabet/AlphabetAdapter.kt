@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.data.response.WordListItem
 import com.example.myapplication.databinding.GridItemBinding
+import java.util.Locale
 
 class AlphabetAdapter : ListAdapter<WordListItem, AlphabetAdapter.AlphabetViewHolder>(DIFF_CALLBACK) {
     private lateinit var onItemClickCallback: OnItemClickCallback
@@ -23,7 +24,11 @@ class AlphabetAdapter : ListAdapter<WordListItem, AlphabetAdapter.AlphabetViewHo
             Glide.with(binding.ivImg.context)
                 .load(item.urlImage)
                 .into(binding.ivImg)
-            binding.tvText.text = item.value
+            binding.tvText.text = item.value?.replaceFirstChar {
+                if (it.isLowerCase()) it.titlecase(
+                    Locale.getDefault()
+                ) else it.toString()
+            }
             binding.root.setOnClickListener {
                 onItemClickCallback.onItemClicked(item)
             }

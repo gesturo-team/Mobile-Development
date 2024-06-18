@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.myapplication.databinding.ActivityDetailNumberBinding
 import com.example.myapplication.detection.CameraActivity
 import com.example.myapplication.factory.MainViewModelFactory
+import java.util.Locale
 
 class DetailNumberActivity : AppCompatActivity() {
     companion object {
@@ -51,7 +52,11 @@ class DetailNumberActivity : AppCompatActivity() {
         detailNumberViewModel.detail.observe(this) {detailAlphabetResponse ->
             if (detailAlphabetResponse.success!!) {
                 detailAlphabetResponse.data?.let { data ->
-                    binding.tvNumber.text = data.value
+                    binding.tvNumber.text = data.value?.replaceFirstChar {
+                        if (it.isLowerCase()) it.titlecase(
+                            Locale.getDefault()
+                        ) else it.toString()
+                    }
                     Glide.with(binding.ivDetailAlphabet.context)
                         .load(data.urlImage)
                         .into(binding.ivDetailAlphabet)

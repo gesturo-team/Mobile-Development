@@ -14,6 +14,7 @@ import com.example.myapplication.databinding.ActivityAlphabetBinding
 import com.example.myapplication.databinding.ActivityDetailAlphabetBinding
 import com.example.myapplication.detection.CameraActivity
 import com.example.myapplication.factory.MainViewModelFactory
+import java.util.Locale
 
 class DetailAlphabetActivity : AppCompatActivity() {
     companion object {
@@ -56,7 +57,11 @@ class DetailAlphabetActivity : AppCompatActivity() {
         detailAlphabetViewModel.detail.observe(this) { detailAlphabetResponse ->
             if (detailAlphabetResponse.success!!) {
                 detailAlphabetResponse.data?.let { data ->
-                    binding.tvAlphabet.text = data.value
+                    binding.tvAlphabet.text = data.value?.replaceFirstChar {
+                        if (it.isLowerCase()) it.titlecase(
+                            Locale.getDefault()
+                        ) else it.toString()
+                    }
                     Glide.with(binding.ivDetailAlphabet.context)
                         .load(data.urlImage)
                         .into(binding.ivDetailAlphabet)

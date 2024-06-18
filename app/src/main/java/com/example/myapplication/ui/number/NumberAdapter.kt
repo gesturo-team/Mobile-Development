@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.data.response.NumberListItem
 import com.example.myapplication.databinding.GridItemBinding
+import java.util.Locale
 
 class NumberAdapter : ListAdapter<NumberListItem, NumberAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
@@ -31,7 +32,11 @@ class NumberAdapter : ListAdapter<NumberListItem, NumberAdapter.MyViewHolder>(DI
             Glide.with(binding.ivImg.context)
                 .load(item.urlImage)
                 .into(binding.ivImg)
-            binding.tvText.text = item.value
+            binding.tvText.text = item.value?.replaceFirstChar {
+                if (it.isLowerCase()) it.titlecase(
+                    Locale.getDefault()
+                ) else it.toString()
+            }
             binding.root.setOnClickListener {
                 onItemClickCallback.onItemClicked(item)
             }

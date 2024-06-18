@@ -59,4 +59,5 @@
     <string name="desc_quiz" translatable="false">Multiple Choice</string>
     <string name="slogan_quiz" translatable="false">Get ready to quiz and conquer!</string>
     <string name="ask" translatable="false">What letter is it?</string>
+    <string name="empty" translatable="false">No History Yet</string>
 </resources>

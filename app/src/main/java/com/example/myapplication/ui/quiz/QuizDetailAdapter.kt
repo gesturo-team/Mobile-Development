@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.data.response.QuizQuestionsItem
 import com.example.myapplication.databinding.ItemQuizPageBinding
+import java.util.Locale
 
 class QuizDetailAdapter(var questionsItem: List<QuizQuestionsItem>) : RecyclerView.Adapter<QuizDetailAdapter.MyViewHolder>() {
     inner class MyViewHolder(val binding: ItemQuizPageBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -25,7 +26,11 @@ class QuizDetailAdapter(var questionsItem: List<QuizQuestionsItem>) : RecyclerVi
                 questionsItem.answers?.forEachIndexed { _, alphabetAnswersItem ->
                     val radioButton = RadioButton(root.context).apply {
                         id = View.generateViewId()
-                        text = alphabetAnswersItem?.value
+                        text = alphabetAnswersItem?.value?.replaceFirstChar {
+                            if (it.isLowerCase()) it.titlecase(
+                                Locale.ROOT
+                            ) else it.toString()
+                        }
                         isChecked = alphabetAnswersItem?.value == questionsItem.userAnswer
                     }
                     radioGroup.addView(radioButton)
